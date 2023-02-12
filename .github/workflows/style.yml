@@ -1,0 +1,17 @@
+on:
+  - push
+  - pull_request
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest
+
+      - name: Style
+        run: |
+          pnpm i
+          pnpm run check
