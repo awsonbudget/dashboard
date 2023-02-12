@@ -3,7 +3,7 @@ on:
   - pull_request
 
 jobs:
-  install:
+  style:
     runs-on: ubuntu-latest
 
     steps:
@@ -13,7 +13,7 @@ jobs:
         with:
           version: latest
 
-      - name: Style
+      - name: Style Check with Prettier
         run: |
           pnpm i
           pnpm run check
