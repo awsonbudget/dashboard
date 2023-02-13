@@ -24,3 +24,27 @@ export const fetchJob = async (): Promise<JobProps[]> => {
     return response.data.data;
   });
 };
+
+export const fetchJobLog = async (job_id: string): Promise<JobProps[]> => {
+  return await axios
+    .get("http://localhost:5550/cloud/job/log", {
+      params: {
+        job_id: job_id,
+      },
+    })
+    .then((response) => {
+      return response.data.data;
+    });
+};
+
+export const fetchNodeLog = async (node_id: string): Promise<JobProps[]> => {
+  return await axios
+    .get("http://localhost:5550/cloud/node/log", {
+      params: {
+        node_id: node_id,
+      },
+    })
+    .then((response) => {
+      return response.data.data;
+    });
+};

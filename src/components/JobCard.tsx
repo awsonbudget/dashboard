@@ -1,3 +1,5 @@
+import { fetchJobLog } from "../api/manager";
+
 export type JobProps = {
   id: string;
   name: string;
@@ -34,7 +36,12 @@ export default function Job({ name, id, node, status }: JobProps) {
         <span className="p-3 text-lg font-regular">Node ID - {node}</span>
         <span className="p-3 text-lg font-regular">{status}</span>
       </span>
+
       <svg
+        onClick={async () => {
+          const log = await fetchJobLog(id);
+          alert(log);
+        }}
         className="h-10 w-40 m-2 justify-self-end"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

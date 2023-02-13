@@ -64,7 +64,7 @@ const App = () => {
         All Nodes
       </div>
 
-      <div className="pt-4 px-10 grid grid-cols-3 gap-8">
+      <div className="pt-4 px-10 grid grid-cols-2 gap-8">
         {nodes.map((node: NodeProps, i: number) => (
           <Node
             name={node.name}
