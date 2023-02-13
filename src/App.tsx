@@ -1,61 +1,48 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Pod, { PodProps } from "./components/PodCard";
 import Node, { NodeProps } from "./components/NodeCard";
 import Job, { JobProps } from "./components/JobCard";
+import { fetchJob, fetchNode, fetchPod } from "./api/manager";
 
 const App = () => {
-  const [pods, setPods] = useState<PodProps[]>([]);
-  const [nodes, setNodes] = useState<NodeProps[]>([]);
-  const [jobs, setJobs] = useState<JobProps[]>([]);
+  const [pods, setPods] = useState<PodProps[] | null>(null);
+  const [nodes, setNodes] = useState<NodeProps[] | null>(null);
+  const [jobs, setJobs] = useState<JobProps[] | null>(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const date = new Date();
-      try {
-        await axios.get("http://localhost:5550/cloud/pod/").then((response) => {
-          console.log(date.getTime(), "getting pods");
-          console.log(response.data.data);
-          let data: PodProps[] = response.data.data;
-          setPods(data);
-          console.log("pods");
-          console.log(pods);
-        });
-      } catch {
-        console.log(date.getTime(), "failed getting pod info");
+    const update = async () => {
+      const podsData = await fetchPod();
+      console.log(podsData);
+      if (podsData === undefined) {
+        setPods(null);
+      } else {
+        setPods(podsData);
       }
-
-      try {
-        await axios
-          .get("http://localhost:5550/cloud/node/")
-          .then((response) => {
-            console.log(date.getTime(), "getting nodes");
-            console.log(response.data.data);
-            let data: NodeProps[] = response.data.data;
-            setNodes(data);
-            console.log("nodes");
-            console.log(nodes);
-          });
-      } catch {
-        console.log(date.getTime(), "failed getting node info");
+      const nodesData = await fetchNode();
+      console.log(nodesData);
+      if (nodesData === undefined) {
+        setNodes(null);
+      } else {
+        setNodes(nodesData);
       }
-
-      try {
-        await axios.get("http://localhost:5550/cloud/job").then((response) => {
-          console.log(date.getTime(), "getting jobs");
-          console.log(response.data.data);
-          let data: JobProps[] = response.data.data;
-          setJobs(data);
-          console.log("jobs");
-        });
-      } catch {
-        console.log(date.getTime(), "failed getting job info");
+      const jobsData = await fetchJob();
+      console.log(jobsData);
+      if (jobsData === undefined) {
+        setJobs(null);
+      } else {
+        setJobs(jobsData);
       }
     };
+    const intervalId = setInterval(update, 5000);
 
-    const intervalID = setInterval(fetchData, 5000);
-    return () => clearInterval(intervalID);
+    return () => {
+      clearInterval(intervalId);
+    };
   }, []);
+
+  if (pods === null || nodes === null || jobs === null) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="bg-[#eef0f8] w-screen h-screen">
