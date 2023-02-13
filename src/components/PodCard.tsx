@@ -9,9 +9,9 @@ export type PodProps = {
 export default function Pod({ name, id, nodes }: PodProps) {
   return (
     <div className="px-10 p-10 grid auto-cols-max gap-10 justify-around">
-      <div className="card flex justify-evenly flex-row items-center">
+      <div className="card flex justify-evenly gap-5 flex-row items-center">
         <svg
-          className="flex justify-start h-9 w-9 ml-5"
+          className="h-9 w-9 ml-5"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
         >
@@ -35,7 +35,7 @@ export default function Pod({ name, id, nodes }: PodProps) {
           <span className="p-3 text-xl font-medium">{name}</span>
           <span className="p-3 text-lg font-regular">ID - {id}</span>
           <span className="p-3 text-lg font-regular">
-            #Node attached - {nodes}
+            {nodes} {nodes > 1 ? "nodes" : "node"} online
           </span>
         </span>
 

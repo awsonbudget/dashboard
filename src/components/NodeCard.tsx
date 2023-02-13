@@ -1,4 +1,4 @@
-import { PodProps } from "./pod";
+import { PodProps } from "./PodCard";
 
 export type NodeProps = {
   name: string;
@@ -31,7 +31,7 @@ export default function Node({ name, id, status, pod }: NodeProps) {
 
         <span className="p-4 font-Inter">
           <span className="p-3 text-xl font-medium">{name}</span>
-          <span className="p-3 text-sm font-regular">{id}</span>
+          <span className="p-3 text-sm font-regular">{id.slice(0, 12)}</span>
           <span className="p-3 text-lg font-regular">{status}</span>
         </span>
 

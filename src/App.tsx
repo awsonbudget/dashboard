@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { PodsPage } from "./pages/pods";
-import Pod, { PodProps } from "./components/pod";
-import Node, { NodeProps } from "./components/node";
-import Job, { JobProps } from "./components/job";
+import Pod, { PodProps } from "./components/PodCard";
+import Node, { NodeProps } from "./components/NodeCard";
+import Job, { JobProps } from "./components/JobCard";
 
 const App = () => {
   const [containers, setContainers] = useState<string[]>();
@@ -62,72 +62,49 @@ const App = () => {
 
   return (
     <div className="bg-[#eef0f8] w-screen h-screen">
-      <h1 className="w-[50.33vw] h-[6.22vh] pt-[4.37vh] pl-[4.89vw] font-Inter text-5xl font-semibold">
-        {" "}
-        AOB Dashboard{" "}
-      </h1>
-
-      <h2 className="w-[20.38vw] h-[4.89vh] pt-[8.00vh] pl-[4.89vw] font-Inter text-4xl font-semibold">
-        {" "}
-        All Pods{" "}
-      </h2>
-
-      <div>
-        <span className="p-4 font-Inter">
-          <span className="p-3 text-xl font-medium">
-            {pods.map((pod: PodProps) => (
-              <div>
-                <div key={pod.id} className="row"></div>
-                <Pod name={pod.name} id={pod.id} nodes={pod.nodes} />
-              </div>
-            ))}
-          </span>
-        </span>
+      <div className="w-[50.33vw] h-[6.22vh] pt-[4.37vh] pl-[4.89vw] font-Inter text-5xl font-semibold">
+        AOB Dashboard
       </div>
 
-      <h3 className="pt-[0vh] pl-[4.89vw] font-Inter text-4xl font-semibold">
-        {" "}
+      <div className="w-[20.38vw] h-[4.89vh] pt-[8.00vh] pl-[4.89vw] font-Inter text-4xl font-semibold">
+        All Pods
+      </div>
+
+      <div className="p-2 grid lg:grid-cols-1 gap-10 justify-around">
+        {pods.map((pod: PodProps, i: number) => (
+          <Pod name={pod.name} id={pod.id} nodes={pod.nodes} key={i} />
+        ))}
+      </div>
+
+      <div className="w-[20.38vw] h-[4.89vh] pt-[8.00vh] pl-[4.89vw] font-Inter text-4xl font-semibold">
         All Nodes
-      </h3>
-
-      <div className="px-10 p-20 grid lg:grid-cols-2 gap-10 justify-around">
-        <span className="p-4 font-Inter">
-          <span className="p-3 text-xl font-medium">
-            {nodes.map((node: NodeProps) => (
-              <div>
-                <div key={node.id} className="row"></div>
-                <Node
-                  name={node.name}
-                  id={node.id}
-                  status={node.status}
-                  pod={node.pod}
-                />
-              </div>
-            ))}
-          </span>
-        </span>
       </div>
 
-      <h3 className="pt-[0vh] pl-[4.89vw] font-Inter text-4xl font-semibold">
-        {" "}
+      <div className="p-2 grid lg:grid-cols-1 gap-10 justify-around">
+        {nodes.map((node: NodeProps, i: number) => (
+          <Node
+            name={node.name}
+            id={node.id}
+            status={node.status}
+            pod={node.pod}
+            key={i}
+          />
+        ))}
+      </div>
+
+      <div className="pt-[0vh] pl-[4.89vw] font-Inter text-4xl font-semibold">
         All Jobs
-      </h3>
+      </div>
       <div className="p-10 grid gap-5 lg:grid-cols-1 justify-around">
-        <span className="p-5 font-Inter">
-          <span className="p-3 text-xl font-medium">
-            {jobs.map((job: JobProps) => (
-              <div>
-                <div key={job.id} className="row"></div>
-                <Job
-                  id={job.id}
-                  name={job.name}
-                  node={job.node}
-                  status={job.status}
-                />
-              </div>
-            ))}
-          </span>
-        </span>
+        {jobs.map((job: JobProps, i: number) => (
+          <Job
+            id={job.id}
+            name={job.name}
+            node={job.node}
+            status={job.status}
+            key={i}
+          />
+        ))}
       </div>
     </div>
   );
