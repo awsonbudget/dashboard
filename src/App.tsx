@@ -87,7 +87,7 @@ const App: React.FC<IPods> = (props: IPods) => {
 
   return (
     <div className="w-screen h-screen">
-      <Podspage pods={pods} />
+      <Podspage pods={pods} nodes={nodes} jobs={jobs} />
     </div>
   );
 };
