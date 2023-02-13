@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { PodsPage } from "./pages/pods";
 import Pod, { PodProps } from "./components/PodCard";
 import Node, { NodeProps } from "./components/NodeCard";
 import Job, { JobProps } from "./components/JobCard";
