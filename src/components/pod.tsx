@@ -1,8 +1,12 @@
 import React from "react";
 
-export default function Pod(props) {
-  const { name, id, nodes } = props.pod;
+export type PodProps = {
+  name: string;
+  id: number;
+  nodes: number;
+};
 
+export default function Pod({ name, id, nodes }: PodProps) {
   return (
     <div className="px-10 p-10 grid auto-cols-max gap-10 justify-around">
       <div className="card flex justify-evenly flex-row items-center">
