@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import React from "react";
 // @ts-ignore
 import Pod from "./../components/pod";
+import Node from "./../components/node";
+import Job from "./../components/job";
 import axios from "axios";
 
-export const Podspage = (props: Pod[]) => {
-  const { pods } = props;
+export const Podspage = (props) => {
+  console.log("in pods page", props);
+  const { pods, nodes, jobs } = props;
   return (
     <div className="bg-[#eef0f8]">
       <h1 className="w-[50.33vw] h-[6.22vh] pt-[4.37vh] pl-[4.89vw] font-Inter text-5xl font-semibold">
@@ -13,17 +16,17 @@ export const Podspage = (props: Pod[]) => {
         AOB Dashboard{" "}
       </h1>
 
-      <h2 className="w-[20.38vw] h-[4.89vh] pt-[10.00vh] pl-[4.89vw] font-Inter text-4xl font-semibold">
+      <h2 className="w-[20.38vw] h-[4.89vh] pt-[8.00vh] pl-[4.89vw] font-Inter text-4xl font-semibold">
         {" "}
         All Pods{" "}
       </h2>
 
-      <div className="px-10 p-20 grid lg:grid-cols-2 gap-10 justify-around">
+      <div>
         <span className="p-4 font-Inter">
           <span className="p-3 text-xl font-medium">
             {pods.map((pod: Pod) => (
               <div>
-                <div key={pod.pid} className="row"></div>
+                <div key={pod.id} className="row"></div>
                 <Pod pod={pod} />
               </div>
             ))}
@@ -36,10 +39,35 @@ export const Podspage = (props: Pod[]) => {
         All Nodes
       </h3>
 
+      <div className="px-10 p-20 grid lg:grid-cols-2 gap-10 justify-around">
+        <span className="p-4 font-Inter">
+          <span className="p-3 text-xl font-medium">
+            {nodes.map((node: Node) => (
+              <div>
+                <div key={node.id} className="row"></div>
+                <Node node={node} />
+              </div>
+            ))}
+          </span>
+        </span>
+      </div>
+
       <h3 className="pt-[0vh] pl-[4.89vw] font-Inter text-4xl font-semibold">
         {" "}
         All Jobs
       </h3>
+      <div className="p-10 grid gap-5 lg:grid-cols-1 justify-around">
+        <span className="p-5 font-Inter">
+          <span className="p-3 text-xl font-medium">
+            {jobs.map((job: Job) => (
+              <div>
+                <div key={job.id} className="row"></div>
+                <Job job={job} />
+              </div>
+            ))}
+          </span>
+        </span>
+      </div>
     </div>
   );
 };
