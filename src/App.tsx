@@ -5,8 +5,6 @@ import Node, { NodeProps } from "./components/NodeCard";
 import Job, { JobProps } from "./components/JobCard";
 
 const App = () => {
-  const [containers, setContainers] = useState<string[]>();
-
   const [pods, setPods] = useState<PodProps[]>([]);
   const [nodes, setNodes] = useState<NodeProps[]>([]);
   const [jobs, setJobs] = useState<JobProps[]>([]);
@@ -61,25 +59,25 @@ const App = () => {
 
   return (
     <div className="bg-[#eef0f8] w-screen h-screen">
-      <div className="w-[50.33vw] h-[6.22vh] pt-[4.37vh] pl-[4.89vw] font-Inter text-5xl font-semibold">
+      <div className="pt-10 px-10 font-Inter text-6xl font-semibold">
         AOB Dashboard
       </div>
 
-      <div className="w-[20.38vw] h-[4.89vh] pt-[8.00vh] pl-[4.89vw] font-Inter text-4xl font-semibold">
+      <div className="pt-10 px-10 font-Inter text-4xl font-semibold">
         All Pods
       </div>
 
-      <div className="p-2 grid lg:grid-cols-1 gap-10 justify-around">
+      <div className="pt-4 px-10 grid grid-cols-3 gap-8">
         {pods.map((pod: PodProps, i: number) => (
           <Pod name={pod.name} id={pod.id} nodes={pod.nodes} key={i} />
         ))}
       </div>
 
-      <div className="w-[20.38vw] h-[4.89vh] pt-[8.00vh] pl-[4.89vw] font-Inter text-4xl font-semibold">
+      <div className="pt-10 px-10 font-Inter text-4xl font-semibold">
         All Nodes
       </div>
 
-      <div className="p-2 grid lg:grid-cols-1 gap-10 justify-around">
+      <div className="pt-4 px-10 grid grid-cols-3 gap-8">
         {nodes.map((node: NodeProps, i: number) => (
           <Node
             name={node.name}
@@ -91,10 +89,10 @@ const App = () => {
         ))}
       </div>
 
-      <div className="pt-[0vh] pl-[4.89vw] font-Inter text-4xl font-semibold">
+      <div className="pt-10 px-10 font-Inter text-4xl font-semibold">
         All Jobs
       </div>
-      <div className="p-10 grid gap-5 lg:grid-cols-1 justify-around">
+      <div className="pt-4 px-10 grid grid-cols-1 gap-8">
         {jobs.map((job: JobProps, i: number) => (
           <Job
             id={job.id}
