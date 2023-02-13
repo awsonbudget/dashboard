@@ -5,7 +5,6 @@ export default function Job(props) {
 
   return (
     <div className="card flex-row items-center p-10 grid lg:grid-cols-1 justify-around">
-
       <svg
         className="h-9 w-9 ml-5"
         xmlns="http://www.w3.org/2000/svg"
