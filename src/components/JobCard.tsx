@@ -7,9 +7,9 @@ export type JobProps = {
 
 export default function Job({ name, id, node, status }: JobProps) {
   return (
-    <div className="card flex-row items-center p-10 grid lg:grid-cols-1 justify-around">
+    <div className="flex card py-2 px-2 justify-around items-center">
       <svg
-        className="h-9 w-9 ml-5"
+        className="h-10 w-9 ml-5"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
       >
@@ -28,14 +28,14 @@ export default function Job({ name, id, node, status }: JobProps) {
         />
       </svg>
 
-      <span className="p-4 font-Inter">
+      <span className="grow h-10 m-2 justify-self-stretch">
         <span className="p-3 text-xl font-medium">{name}</span>
         <span className="p-3 text-sm font-regular">{id}</span>
         <span className="p-3 text-lg font-regular">Node ID - {node}</span>
         <span className="p-3 text-lg font-regular">{status}</span>
       </span>
       <svg
-        className="h-12 w-13 mr-5"
+        className="h-10 w-40 m-2 justify-self-end"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
       >
