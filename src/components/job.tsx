@@ -1,8 +1,11 @@
-import React from "react";
+export type JobProps = {
+  id: string;
+  name: string;
+  node: string;
+  status: string;
+};
 
-export default function Job(props) {
-  const { name, id, node, status } = props.job;
-
+export default function Job({ name, id, node, status }: JobProps) {
   return (
     <div className="card flex-row items-center p-10 grid lg:grid-cols-1 justify-around">
       <svg

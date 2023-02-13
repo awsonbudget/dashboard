@@ -1,8 +1,13 @@
-import React from "react";
+import { PodProps } from "./pod";
 
-export default function Node(props) {
-  const { name, id, status } = props.node;
+export type NodeProps = {
+  name: string;
+  id: string;
+  status: string;
+  pod: Partial<PodProps>;
+};
 
+export default function Node({ name, id, status, pod }: NodeProps) {
   return (
     <div className="px-10 p-10 grid auto-cols-max gap-10 justify-around">
       <div className="card flex justify-evenly gap-5 flex-row items-center">
