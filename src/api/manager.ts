@@ -25,7 +25,7 @@ export const fetchJob = async (): Promise<JobProps[]> => {
   });
 };
 
-export const fetchJobLog = async (job_id: string): Promise<JobProps[]> => {
+export const fetchJobLog = async (job_id: string): Promise<string> => {
   return await axios
     .get("http://localhost:5550/cloud/job/log", {
       params: {

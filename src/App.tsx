@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import Pod, { PodProps } from "./components/PodCard";
 import Node, { NodeProps } from "./components/NodeCard";
 import Job, { JobProps } from "./components/JobCard";
-import { fetchJob, fetchNode, fetchPod } from "./api/manager";
+import { fetchJob, fetchNode, fetchPod, fetchJobLog, fetchNodeLog } from "./api/manager";
+import Log, { LogProps } from "./components/LogCard";
 
 const App = () => {
   const [pods, setPods] = useState<PodProps[] | null>(null);
   const [nodes, setNodes] = useState<NodeProps[] | null>(null);
   const [jobs, setJobs] = useState<JobProps[] | null>(null);
+  const [log, setLog] = useState<LogProps | null>(null);
 
   useEffect(() => {
     const update = async () => {
@@ -44,9 +46,31 @@ const App = () => {
     return <div>Loading...</div>;
   }
 
+  const getJobLog = async (jobID) => {
+    let getLog = await fetchJobLog(jobID)
+      if (getLog === null) {
+        getLog = ''
+      }
+
+    setLog(getLog)
+    console.log("get log")
+    console.log(getLog)
+  }
+
+  const getNodeLog = async (nodeID) => {
+    let getLog = await fetchNodeLog(nodeID)
+      if (Object.keys(getLog).length === 0) {
+        getLog = ''
+      }
+
+    setLog(getLog)
+    console.log("get log")
+    console.log(getLog)
+  }
+
   return (
     <div className="bg-[#eef0f8] w-screen h-screen">
-      <div className="pt-10 px-10 font-Inter text-6xl font-semibold">
+      <div className="pt-10 px-10 font-Inter text-5xl font-semibold">
         AOB Dashboard
       </div>
 
@@ -72,6 +96,7 @@ const App = () => {
             status={node.status}
             pod={node.pod}
             key={i}
+            getLog={getNodeLog}
           />
         ))}
       </div>
@@ -87,8 +112,16 @@ const App = () => {
             node={job.node}
             status={job.status}
             key={i}
+            getLog={getJobLog}
           />
         ))}
+      </div>
+
+      <div className="pt-10 px-10 font-Inter text-4xl font-semibold">
+        Log
+      </div>
+      <div className="pt-4 px-10 grid grid-cols-1 gap-8">
+        <Log log = {log}/> 
       </div>
     </div>
   );
