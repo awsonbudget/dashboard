@@ -5,9 +5,10 @@ export type JobProps = {
   name: string;
   node: string;
   status: string;
+  getLog: (jobID: string) => void;
 };
 
-export default function Job({ name, id, node, status }: JobProps) {
+export default function Job({ name, id, node, status, getLog }: JobProps) {
   return (
     <div className="flex card py-2 px-2 justify-around items-center">
       <svg
@@ -39,8 +40,7 @@ export default function Job({ name, id, node, status }: JobProps) {
 
       <svg
         onClick={async () => {
-          const log = await fetchJobLog(id);
-          alert(log);
+          getLog(id);
         }}
         className="h-10 w-40 m-2 justify-self-end"
         xmlns="http://www.w3.org/2000/svg"
