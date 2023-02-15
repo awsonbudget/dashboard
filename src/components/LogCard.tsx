@@ -5,6 +5,13 @@ interface loaderParams {
   type: string;
   id: string;
 }
+
+type LogProps = {
+  status: boolean;
+  msg: string;
+  data: string;
+};
+
 export async function loader({ params }: LoaderFunctionArgs) {
   const typedParams = params as unknown as loaderParams;
   if (typedParams.type === "node") {
@@ -16,8 +23,14 @@ export async function loader({ params }: LoaderFunctionArgs) {
 }
 
 export default function Log() {
-  const log = useLoaderData() as string;
+  const log = useLoaderData() as unknown as LogProps;
+  if (log.status === false) {
+    return <div className="p-3 text-md font-regular">no log found</div>;
+  }
+
   return (
-    <div className="p-3 text-md font-regular whitespace-pre-wrap">{log}</div>
+    <div className="p-3 text-md font-regular whitespace-pre-wrap">
+      {log.data}
+    </div>
   );
 }
