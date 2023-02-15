@@ -21,14 +21,14 @@ export const fetchNode = async (): Promise<NodeProps[]> => {
 };
 
 export const fetchJob = async (): Promise<JobProps[]> => {
-  return await axios.get(manager + "/cloud/job").then((response) => {
+  return await axios.get(manager + "/cloud/job/").then((response) => {
     return response.data.data;
   });
 };
 
 export const fetchJobLog = async (job_id: string): Promise<string> => {
   return await axios
-    .get(manager + "/cloud/job/log", {
+    .get(manager + "/cloud/job/log/", {
       params: {
         job_id: job_id,
       },
@@ -40,7 +40,7 @@ export const fetchJobLog = async (job_id: string): Promise<string> => {
 
 export const fetchNodeLog = async (node_id: string): Promise<string> => {
   return await axios
-    .get(manager + "/cloud/node/log", {
+    .get(manager + "/cloud/node/log/", {
       params: {
         node_id: node_id,
       },
