@@ -48,7 +48,7 @@ const App = () => {
   }
 
   return (
-    <div className="bg-[#eef0f8]">
+    <div className="bg-gradient-to-b from-gray-100 to-gray-300 min-h-screen">
       <div className="pt-10 px-10 font-Inter text-5xl font-semibold">
         AOB Dashboard
       </div>
