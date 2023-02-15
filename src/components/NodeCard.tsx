@@ -22,6 +22,7 @@ export default function Node({ name, id, status, pod }: NodeProps) {
         <span className="p-3 text-xl font-semibold">{name}</span>
         <span className="p-3 text-sm font-regular">{id.slice(0, 12)}</span>
         <span className="p-3 text-lg font-regular">{status}</span>
+        <span className="p-3 text-lg font-regular">{pod.name}</span>
       </span>
 
       <div>
