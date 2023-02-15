@@ -1,0 +1,19 @@
+<svg
+    className="h-10 w-9 ml-2"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+>
+    <path
+        stroke="#000"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M26.25 5.469H8.75c-1.777 0-2.94.957-3.281 2.734L3.28 18.593v7.657a3.29 3.29 0 0 0 3.281 3.281h21.875a3.29 3.29 0 0 0 3.282-3.281v-7.656L29.53 8.204c-.341-1.847-1.572-2.735-3.281-2.735Z"
+    />
+    <path
+        stroke="#000"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M3.281 18.594h9.844a4.375 4.375 0 1 0 8.75 0h9.844M9.844 9.844h15.312M8.75 14.219h17.5"
+    />
+</svg>
