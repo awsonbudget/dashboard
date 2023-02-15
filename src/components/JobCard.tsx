@@ -10,9 +10,9 @@ export type JobProps = {
 
 export default function Job({ name, id, node, status, getLog }: JobProps) {
   return (
-    <div className="flex card py-2 px-2 justify-around items-center">
+    <div className="flex card py-2 px-2 justify-around items-center hover:bg-blue-50">
       <svg
-        className="h-10 w-9 ml-5"
+        className="h-10 w-9 ml-2"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
       >
@@ -31,10 +31,10 @@ export default function Job({ name, id, node, status, getLog }: JobProps) {
         />
       </svg>
 
-      <span className="grow h-10 m-2 justify-self-stretch">
+      <span className="grow h-10 m-2 justify-self-stretch font-Inter flex items-center">
         <span className="p-3 text-xl font-medium">{name}</span>
-        <span className="p-3 text-sm font-regular">{id}</span>
-        <span className="p-3 text-lg font-regular">Node ID - {node}</span>
+        <span className="p-3 text-md font-regular">{id}</span>
+        <span className="p-3 text-lg font-regular">Under {node}</span>
         <span className="p-3 text-lg font-regular">{status}</span>
       </span>
 

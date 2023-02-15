@@ -5,13 +5,13 @@ export type NodeProps = {
   name: string;
   id: string;
   status: string;
-  pod: Partial<PodProps>
+  pod: Partial<PodProps>;
   getLog: (nodeID: string) => void;
 };
 
 export default function Node({ name, id, status, pod, getLog }: NodeProps) {
   return (
-    <div className="flex card py-2 px-2 justify-around items-center">
+    <div className="flex card py-2 px-2 justify-around items-center hover:bg-blue-50">
       <svg
         className="h-10 w-9 m-2 justify-self-start"
         xmlns="http://www.w3.org/2000/svg"
@@ -30,8 +30,8 @@ export default function Node({ name, id, status, pod, getLog }: NodeProps) {
         <circle cx="13" cy="7" r="2" fill="#000" />
       </svg>
 
-      <span className="grow h-10 m-2 justify-self-stretch">
-        <span className="p-3 text-xl font-medium">{name}</span>
+      <span className="grow h-10 m-2 justify-self-stretch font-Inter flex items-center">
+        <span className="p-3 text-xl font-semibold">{name}</span>
         <span className="p-3 text-sm font-regular">{id.slice(0, 12)}</span>
         <span className="p-3 text-lg font-regular">{status}</span>
       </span>

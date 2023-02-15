@@ -2,7 +2,13 @@ import { useEffect, useState } from "react";
 import Pod, { PodProps } from "./components/PodCard";
 import Node, { NodeProps } from "./components/NodeCard";
 import Job, { JobProps } from "./components/JobCard";
-import { fetchJob, fetchNode, fetchPod, fetchJobLog, fetchNodeLog } from "./api/manager";
+import {
+  fetchJob,
+  fetchNode,
+  fetchPod,
+  fetchJobLog,
+  fetchNodeLog,
+} from "./api/manager";
 import Log, { LogProps } from "./components/LogCard";
 
 const App = () => {
@@ -47,26 +53,26 @@ const App = () => {
   }
 
   const getJobLog = async (jobID) => {
-    let getLog = await fetchJobLog(jobID)
-      if (getLog === null) {
-        getLog = ''
-      }
+    let getLog = await fetchJobLog(jobID);
+    if (getLog === null) {
+      getLog = "";
+    }
 
-    setLog(getLog)
-    console.log("get log")
-    console.log(getLog)
-  }
+    setLog(getLog);
+    console.log("get log");
+    console.log(getLog);
+  };
 
   const getNodeLog = async (nodeID) => {
-    let getLog = await fetchNodeLog(nodeID)
-      if (Object.keys(getLog).length === 0) {
-        getLog = ''
-      }
+    let getLog = await fetchNodeLog(nodeID);
+    if (Object.keys(getLog).length === 0) {
+      getLog = "";
+    }
 
-    setLog(getLog)
-    console.log("get log")
-    console.log(getLog)
-  }
+    setLog(getLog);
+    console.log("get log");
+    console.log(getLog);
+  };
 
   return (
     <div className="bg-[#eef0f8] w-screen h-screen">
@@ -78,7 +84,7 @@ const App = () => {
         All Pods
       </div>
 
-      <div className="pt-4 px-10 grid grid-cols-3 gap-8">
+      <div className="pt-4 px-10 grid grid-cols-2 gap-8">
         {pods.map((pod: PodProps, i: number) => (
           <Pod name={pod.name} id={pod.id} nodes={pod.nodes} key={i} />
         ))}
@@ -117,11 +123,9 @@ const App = () => {
         ))}
       </div>
 
-      <div className="pt-10 px-10 font-Inter text-4xl font-semibold">
-        Log
-      </div>
+      <div className="pt-10 px-10 font-Inter text-4xl font-semibold">Log</div>
       <div className="pt-4 px-10 grid grid-cols-1 gap-8">
-        <Log log = {log}/> 
+        <Log log={log} />
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ export type PodProps = {
 
 export default function Pod({ name, id, nodes }: PodProps) {
   return (
-    <div className="flex card py-2 px-2 justify-around items-center content-center">
+    <div className="flex card py-2 px-2 justify-around items-center hover:bg-blue-50">
       <svg
         className="h-10 w-9 m-2 justify-self-start"
         xmlns="http://www.w3.org/2000/svg"
@@ -30,9 +30,9 @@ export default function Pod({ name, id, nodes }: PodProps) {
         />
       </svg>
 
-      <div className="grow h-10 m-2 justify-self-stretch font-Inter">
-        <span className="p-3 text-xl font-medium">{name}</span>
-        <span className="p-3 text-sm font-regular">ID - {id}</span>
+      <div className="grow h-10 m-2 justify-self-stretch font-Inter flex items-center">
+        <span className="p-3 text-xl font-semibold">{name}</span>
+        <span className="p-3 text-lg font-regular">ID - {id}</span>
         <span className="p-3 text-lg font-regular">
           {nodes} {nodes > 1 ? "nodes" : "node"} online
         </span>
