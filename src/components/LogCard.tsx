@@ -1,15 +1,23 @@
-import { fetchJobLog } from "../api/manager";
+import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
+import { fetchJobLog, fetchNodeLog } from "../api/manager";
 
-export type LogProps = {
-  log: string;
-};
+interface loaderParams {
+  type: string;
+  id: string;
+}
+export async function loader({ params }: LoaderFunctionArgs) {
+  const typedParams = params as unknown as loaderParams;
+  if (typedParams.type === "node") {
+    return await fetchNodeLog(typedParams.id);
+  }
+  if (typedParams.type === "job") {
+    return await fetchJobLog(typedParams.id);
+  }
+}
 
-export default function Log({ log }: LogProps) {
+export default function Log() {
+  const log = useLoaderData() as string;
   return (
-    <div className="flex card py-2 px-2 justify-around items-center">
-      <span className="grow h-10 m-2 justify-self-stretch">
-        <span className="p-3 text-md font-regular">{log}</span>
-      </span>
-    </div>
+    <div className="p-3 text-md font-regular whitespace-pre-wrap">{log}</div>
   );
 }
