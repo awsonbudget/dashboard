@@ -1,4 +1,5 @@
-import { fetchNodeLog } from "../api/manager";
+import { useNavigate } from "react-router-dom";
+import { fetchNode, fetchNodeLog } from "../api/manager";
 import { PodProps } from "./PodCard";
 
 export type NodeProps = {
@@ -6,10 +7,10 @@ export type NodeProps = {
   id: string;
   status: string;
   pod: Partial<PodProps>;
-  getLog: (nodeID: string) => void;
 };
 
-export default function Node({ name, id, status, pod, getLog }: NodeProps) {
+export default function Node({ name, id, status, pod }: NodeProps) {
+  const navigate = useNavigate();
   return (
     <div className="flex card py-2 px-2 justify-around items-center hover:bg-blue-50">
       <svg
@@ -38,7 +39,7 @@ export default function Node({ name, id, status, pod, getLog }: NodeProps) {
 
       <svg
         onClick={async () => {
-          getLog(id);
+          navigate("/node/log/" + id);
         }}
         className="h-10 w-40 m-2 justify-self-end"
         xmlns="http://www.w3.org/2000/svg"

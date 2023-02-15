@@ -1,3 +1,4 @@
+import { Link, useNavigate } from "react-router-dom";
 import { fetchJobLog } from "../api/manager";
 
 export type JobProps = {
@@ -5,10 +6,10 @@ export type JobProps = {
   name: string;
   node: string;
   status: string;
-  getLog: (jobID: string) => void;
 };
 
-export default function Job({ name, id, node, status, getLog }: JobProps) {
+export default function Job({ name, id, node, status }: JobProps) {
+  const navigate = useNavigate();
   return (
     <div className="flex card py-2 px-2 justify-around items-center hover:bg-blue-50">
       <svg
@@ -40,7 +41,7 @@ export default function Job({ name, id, node, status, getLog }: JobProps) {
 
       <svg
         onClick={async () => {
-          getLog(id);
+          navigate("/job/log/" + id);
         }}
         className="h-10 w-40 m-2 justify-self-end"
         xmlns="http://www.w3.org/2000/svg"
