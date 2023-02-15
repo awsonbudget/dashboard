@@ -1,0 +1,17 @@
+<svg
+    className="h-10 w-9 m-2 justify-self-start"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+>
+    <rect
+        width="28"
+        height="28"
+        x="1"
+        y="1"
+        stroke="#000"
+        stroke-width="2"
+        rx="5"
+    />
+    <circle cx="7" cy="7" r="2" fill="#000" />
+    <circle cx="13" cy="7" r="2" fill="#000" />
+</svg>
