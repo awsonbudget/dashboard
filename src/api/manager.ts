@@ -37,7 +37,7 @@ export const fetchJobLog = async (job_id: string): Promise<string> => {
     });
 };
 
-export const fetchNodeLog = async (node_id: string): Promise<JobProps[]> => {
+export const fetchNodeLog = async (node_id: string): Promise<string> => {
   return await axios
     .get("http://localhost:5550/cloud/node/log", {
       params: {
