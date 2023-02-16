@@ -18,10 +18,14 @@ export default function Job({ name, id, node, status }: JobProps) {
       </div>
 
       <span className="grow h-10 m-2 justify-self-stretch font-Inter flex items-center">
-        <span className="p-3 text-xl font-medium">{name}</span>
+        <span className="p-3 text-xl font-semibold">{name}</span>
         <span className="p-3 text-md font-regular">{id}</span>
-        <span className="p-3 text-lg font-regular">Under {node}</span>
-        <span className="p-3 text-lg font-regular">{status}</span>
+        {node === null ? (
+          <span className="p-3 text-lg font-regular">No node assigned</span>
+        ) : (
+          <span className="p-3 text-lg font-regular">Under {node}</span>
+        )}
+        <span className="p-3 text-lg font-regular">{status.toUpperCase()}</span>
       </span>
 
       <div>

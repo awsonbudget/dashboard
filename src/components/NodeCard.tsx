@@ -20,9 +20,9 @@ export default function Node({ name, id, status, pod }: NodeProps) {
 
       <span className="grow h-10 m-2 justify-self-stretch font-Inter flex items-center">
         <span className="p-3 text-xl font-semibold">{name}</span>
-        <span className="p-3 text-sm font-regular">{id.slice(0, 12)}</span>
-        <span className="p-3 text-lg font-regular">{status}</span>
-        <span className="p-3 text-lg font-regular">{pod.name}</span>
+        <span className="p-3 text-md font-regular">{id}</span>
+        <span className="p-3 text-lg font-regular">Within {pod.name}</span>
+        <span className="p-3 text-lg font-regular">{status.toUpperCase()}</span>
       </span>
 
       <div>
