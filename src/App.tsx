@@ -3,6 +3,7 @@ import Pod, { PodProps } from "./components/PodCard";
 import Node, { NodeProps } from "./components/NodeCard";
 import Job, { JobProps } from "./components/JobCard";
 import { fetchJob, fetchNode, fetchPod } from "./api/manager";
+import LoadingPage from "./pages/LoadingPage";
 
 const App = () => {
   const [pods, setPods] = useState<PodProps[] | null>(null);
@@ -44,7 +45,7 @@ const App = () => {
   }, []);
 
   if (pods === null || nodes === null || jobs === null) {
-    return <div>Loading...</div>;
+    return <LoadingPage delay={5} />;
   }
 
   return (
