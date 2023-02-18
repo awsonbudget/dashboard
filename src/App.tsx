@@ -57,7 +57,7 @@ const App = () => {
         All Pods
       </div>
 
-      <div className="pt-4 px-10 grid grid-cols-2 gap-8">
+      <div className="pt-4 px-10 grid lg:grid-cols-2 gap-8">
         {pods.map((pod: PodProps, i: number) => (
           <Pod name={pod.name} id={pod.id} nodes={pod.nodes} key={i} />
         ))}
@@ -67,7 +67,7 @@ const App = () => {
         All Nodes
       </div>
 
-      <div className="pt-4 px-10 grid grid-cols-1 gap-8">
+      <div className="pt-4 px-10 grid xl:grid-cols-2 gap-8">
         {nodes.map((node: NodeProps, i: number) => (
           <Node
             name={node.name}
