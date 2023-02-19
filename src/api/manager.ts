@@ -4,6 +4,8 @@ import { NodeProps } from "../components/NodeCard";
 import { PodProps } from "../components/PodCard";
 
 const manager = import.meta.env.VITE_MANAGER;
+export const WS_ENDPOINT = "ws://127.0.0.1:5000/internal/update/";
+
 if (manager === undefined) {
   throw new Error("Missing VITE_MANAGER env variable");
 }

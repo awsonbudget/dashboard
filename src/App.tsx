@@ -2,49 +2,45 @@ import { useEffect, useState } from "react";
 import Pod, { PodProps } from "./components/PodCard";
 import Node, { NodeProps } from "./components/NodeCard";
 import Job, { JobProps } from "./components/JobCard";
-import { fetchJob, fetchNode, fetchPod } from "./api/manager";
+import { WS_ENDPOINT } from "./api/manager";
 import LoadingPage from "./pages/LoadingPage";
 
 const App = () => {
-  const [pods, setPods] = useState<PodProps[] | null>(null);
-  const [nodes, setNodes] = useState<NodeProps[] | null>(null);
-  const [jobs, setJobs] = useState<JobProps[] | null>(null);
+  const [pods, setPods] = useState<PodProps[]>([]);
+  const [nodes, setNodes] = useState<NodeProps[]>([]);
+  const [jobs, setJobs] = useState<JobProps[]>([]);
+  const [initialized, setInitialized] = useState<boolean>(false);
 
   useEffect(() => {
-    const update = async () => {
-      const podsData = await fetchPod();
-      console.log(podsData);
-      if (podsData === undefined) {
-        setPods(null);
-      } else {
-        setPods(podsData);
-      }
-      const nodesData = await fetchNode();
-      console.log(nodesData);
-      if (nodesData === undefined) {
-        setNodes(null);
-      } else {
-        setNodes(nodesData);
-      }
-      const jobsData = await fetchJob();
-      console.log(jobsData);
-      if (jobsData === undefined) {
-        setJobs(null);
-      } else {
-        setJobs(jobsData);
+    const socket = new WebSocket(WS_ENDPOINT);
+
+    socket.onmessage = (event) => {
+      const incoming = JSON.parse(event.data);
+      if (incoming.type === "job") {
+        setInitialized(true);
+        const jobs: JobProps[] = incoming.data;
+        setJobs(jobs);
+      } else if (incoming.type === "node") {
+        setInitialized(true);
+        const nodes: NodeProps[] = incoming.data;
+        setNodes(nodes);
+      } else if (incoming.type === "pod") {
+        setInitialized(true);
+        const pods: PodProps[] = incoming.data;
+        setPods(pods);
+      } else if (incoming.type === "error") {
+        setInitialized(false);
       }
     };
-    update();
-    const intervalId = setInterval(() => {
-      update();
-    }, 5000);
 
     return () => {
-      clearInterval(intervalId);
+      if (socket.readyState === 1) {
+        socket.close();
+      }
     };
   }, []);
 
-  if (pods === null || nodes === null || jobs === null) {
+  if (!initialized) {
     return <LoadingPage delay={5} />;
   }
 
