@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Pod, { PodProps } from "./components/PodCard";
 import Node, { NodeProps } from "./components/NodeCard";
 import Job, { JobProps } from "./components/JobCard";
-import { WS_ENDPOINT } from "./api/manager";
+import { Socket } from "./api/manager";
 import LoadingPage from "./pages/LoadingPage";
 
 const App = () => {
@@ -12,9 +12,7 @@ const App = () => {
   const [initialized, setInitialized] = useState<boolean>(false);
 
   useEffect(() => {
-    const socket = new WebSocket(WS_ENDPOINT);
-
-    socket.onmessage = (event) => {
+    Socket.onmessage = (event) => {
       const incoming = JSON.parse(event.data);
       if (incoming.type === "job") {
         setInitialized(true);
@@ -34,8 +32,8 @@ const App = () => {
     };
 
     return () => {
-      if (socket.readyState === 1) {
-        socket.close();
+      if (Socket.readyState === 1) {
+        Socket.close();
       }
     };
   }, []);
