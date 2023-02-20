@@ -11,6 +11,10 @@ const App = () => {
   const [jobs, setJobs] = useState<JobProps[]>([]);
   const [initialized, setInitialized] = useState<boolean>(false);
 
+  if (Socket.readyState === 3) { // HAX
+    window.location.reload();
+  }
+
   useEffect(() => {
     Socket.onmessage = (event) => {
       const incoming = JSON.parse(event.data);

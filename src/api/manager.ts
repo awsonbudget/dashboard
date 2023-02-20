@@ -4,8 +4,9 @@ import { NodeProps } from "../components/NodeCard";
 import { PodProps } from "../components/PodCard";
 
 const addr = import.meta.env.VITE_MANAGER;
-const manager = "https://" + addr;
-const ws = "wss://" + addr + "/internal/update/";
+const manager = (import.meta.env.PROD ? "https://" : "http://") + addr;
+const ws =
+  (import.meta.env.PROD ? "wss://" : "ws://") + addr + "/internal/update/";
 export const Socket = new WebSocket(ws);
 
 if (manager === undefined) {
