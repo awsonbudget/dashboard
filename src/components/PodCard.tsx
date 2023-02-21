@@ -1,8 +1,10 @@
 import PodIcon from "../assets/pod.svg";
 import ArrowIcon from "../assets/arrow.svg";
 import { PodProps } from "../api/type";
+import { useNavigate } from "react-router-dom";
 
-export default function Pod({ name, id, nodes }: PodProps) {
+export default function PodCard({ name, id, nodes }: PodProps) {
+  const navigate = useNavigate();
   return (
     <div className="flex card py-2 px-2 justify-around items-center hover:bg-blue-50">
       <div>
@@ -18,7 +20,13 @@ export default function Pod({ name, id, nodes }: PodProps) {
       </div>
 
       <div>
-        <img src={ArrowIcon} className="h-10 w-9 m-2 justify-self-end" />
+        <img
+          src={ArrowIcon}
+          onClick={async () => {
+            navigate("/pod/" + id);
+          }}
+          className="h-10 w-9 m-2 justify-self-end"
+        />
       </div>
     </div>
   );

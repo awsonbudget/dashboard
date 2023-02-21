@@ -1,7 +1,6 @@
-import Pod from "../components/PodCard";
-import Node from "../components/NodeCard";
-import Job from "../components/JobCard";
-import LoadingPage from "../pages/LoadingPage";
+import PodCard from "../components/PodCard";
+import NodeCard from "../components/NodeCard";
+import JobCard from "../components/JobCard";
 import { JobProps, NodeProps, PodProps } from "../api/type";
 
 type Props = {
@@ -23,7 +22,7 @@ const HomePage = (props: Props) => {
 
       <div className="pt-4 px-10 grid lg:grid-cols-2 gap-8">
         {props.pods.map((pod: PodProps, i: number) => (
-          <Pod name={pod.name} id={pod.id} nodes={pod.nodes} key={i} />
+          <PodCard name={pod.name} id={pod.id} nodes={pod.nodes} key={i} />
         ))}
       </div>
 
@@ -33,7 +32,7 @@ const HomePage = (props: Props) => {
 
       <div className="pt-4 px-10 grid xl:grid-cols-2 gap-8">
         {props.nodes.map((node: NodeProps, i: number) => (
-          <Node
+          <NodeCard
             name={node.name}
             id={node.id}
             status={node.status}
@@ -48,7 +47,7 @@ const HomePage = (props: Props) => {
       </div>
       <div className="pt-4 px-10 grid grid-cols-1 gap-8">
         {props.jobs.map((job: JobProps, i: number) => (
-          <Job
+          <JobCard
             id={job.id}
             name={job.name}
             node={job.node}

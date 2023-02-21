@@ -15,7 +15,7 @@ export type NodeProps = {
   name: string;
   id: string;
   status: string;
-  pod: Partial<PodProps>;
+  pod: Omit<PodProps, "nodes">;
 };
 
 export type PodProps = {

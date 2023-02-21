@@ -3,7 +3,7 @@ import { JobProps } from "../api/type";
 import JobIcon from "../assets/job.svg";
 import PrintLogIcon from "../assets/printlog.svg";
 
-export default function Job({ name, id, node, status }: JobProps) {
+export default function JobCard({ name, id, node, status }: JobProps) {
   const navigate = useNavigate();
   return (
     <div className="flex card py-2 px-2 justify-around items-center hover:bg-blue-50">

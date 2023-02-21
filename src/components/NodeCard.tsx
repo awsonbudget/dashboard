@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import NodeIcon from "../assets/node.svg";
-import PrintLogIcon from "../assets/printlog.svg";
 import { NodeProps } from "../api/type";
+import ArrowIcon from "../assets/arrow.svg";
 
-export default function Node({ name, id, status, pod }: NodeProps) {
+export default function NodeCard({ name, id, status, pod }: NodeProps) {
   const navigate = useNavigate();
   return (
     <div className="flex card py-2 px-2 justify-around items-center hover:bg-blue-50">
@@ -20,11 +20,11 @@ export default function Node({ name, id, status, pod }: NodeProps) {
 
       <div>
         <img
-          src={PrintLogIcon}
+          src={ArrowIcon}
           onClick={async () => {
-            navigate("/node/" + id + "/log");
+            navigate("/node/" + id);
           }}
-          className="h-10 w-40 m-2 justify-self-end"
+          className="h-10 w-9 m-2 justify-self-end"
         />
       </div>
     </div>
