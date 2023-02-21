@@ -15,6 +15,7 @@ const LogPage = (props: Props) => {
   }
 
   const [log, setLog] = useState<string>("no log found");
+  const [refresh, setRefresh] = useState<boolean>(true);
   useEffect(() => {
     const getLog = async (type: "node" | "job", id: string) => {
       if (type === "node") {
@@ -28,18 +29,26 @@ const LogPage = (props: Props) => {
         });
       }
     };
-    getLog(type, id);
+
+    if (refresh) {
+      getLog(type, id);
+      setRefresh(false);
+    }
   });
 
   return (
     <div>
       <div className="p-3">LogPage</div>
-      <div className="p-3">{type}</div>
-      <div className="p-3">{id}</div>
-      <div className="p-3 whitespace-pre-wrap">{log}</div>
       <Link to="/" className="p-3">
         Back
       </Link>
+      <div className="p-3" onClick={() => setRefresh(true)}>
+        Refresh
+      </div>
+      <div className="p-3">
+        {type} : {id}
+      </div>
+      <div className="p-3 whitespace-pre-wrap">{log}</div>
     </div>
   );
 };
