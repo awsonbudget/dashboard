@@ -1,14 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { PodProps } from "./PodCard";
 import NodeIcon from "../assets/node.svg";
 import PrintLogIcon from "../assets/printlog.svg";
-
-export type NodeProps = {
-  name: string;
-  id: string;
-  status: string;
-  pod: Partial<PodProps>;
-};
+import { NodeProps } from "../api/type";
 
 export default function Node({ name, id, status, pod }: NodeProps) {
   const navigate = useNavigate();
@@ -29,7 +22,7 @@ export default function Node({ name, id, status, pod }: NodeProps) {
         <img
           src={PrintLogIcon}
           onClick={async () => {
-            navigate("/node/log/" + id);
+            navigate("/node/" + id + "/log");
           }}
           className="h-10 w-40 m-2 justify-self-end"
         />

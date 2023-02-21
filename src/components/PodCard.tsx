@@ -1,11 +1,6 @@
 import PodIcon from "../assets/pod.svg";
 import ArrowIcon from "../assets/arrow.svg";
-
-export type PodProps = {
-  name: string;
-  id: number;
-  nodes: number;
-};
+import { PodProps } from "../api/type";
 
 export default function Pod({ name, id, nodes }: PodProps) {
   return (

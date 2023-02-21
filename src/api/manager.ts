@@ -1,13 +1,11 @@
 import axios from "axios";
-import { JobProps } from "../components/JobCard";
-import { NodeProps } from "../components/NodeCard";
-import { PodProps } from "../components/PodCard";
+import { JobProps, LogProps, NodeProps, PodProps } from "./type";
 
 const addr = import.meta.env.VITE_MANAGER;
 const manager = (import.meta.env.PROD ? "https://" : "http://") + addr;
 const ws =
   (import.meta.env.PROD ? "wss://" : "ws://") + addr + "/internal/update/";
-export const Socket = new WebSocket(ws);
+export const socket = new WebSocket(ws);
 
 if (manager === undefined) {
   throw new Error("Missing VITE_MANAGER env variable");
@@ -31,7 +29,7 @@ export const fetchJob = async (): Promise<JobProps[]> => {
   });
 };
 
-export const fetchJobLog = async (job_id: string): Promise<string> => {
+export const fetchJobLog = async (job_id: string): Promise<LogProps> => {
   return await axios
     .get(manager + "/cloud/job/log/", {
       params: {
@@ -39,11 +37,12 @@ export const fetchJobLog = async (job_id: string): Promise<string> => {
       },
     })
     .then((response) => {
+      console.log(response.data);
       return response.data;
     });
 };
 
-export const fetchNodeLog = async (node_id: string): Promise<string> => {
+export const fetchNodeLog = async (node_id: string): Promise<LogProps> => {
   return await axios
     .get(manager + "/cloud/node/log/", {
       params: {
@@ -51,6 +50,7 @@ export const fetchNodeLog = async (node_id: string): Promise<string> => {
       },
     })
     .then((response) => {
+      console.log(response.data);
       return response.data;
     });
 };

@@ -1,13 +1,7 @@
 import { useNavigate } from "react-router-dom";
+import { JobProps } from "../api/type";
 import JobIcon from "../assets/job.svg";
 import PrintLogIcon from "../assets/printlog.svg";
-
-export type JobProps = {
-  id: string;
-  name: string;
-  node: string;
-  status: string;
-};
 
 export default function Job({ name, id, node, status }: JobProps) {
   const navigate = useNavigate();
@@ -32,7 +26,7 @@ export default function Job({ name, id, node, status }: JobProps) {
         <img
           src={PrintLogIcon}
           onClick={async () => {
-            navigate("/job/log/" + id);
+            navigate("/job/" + id + "/log");
           }}
           className="h-10 w-40 m-2 justify-self-end"
         />
