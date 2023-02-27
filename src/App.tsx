@@ -34,7 +34,7 @@ function App() {
         console.log(pods);
         setPods(pods);
       } else if (incoming.type === "error") {
-        setInitialized(true);
+        setInitialized(false);
       }
     },
     (err) => console.log(err)
