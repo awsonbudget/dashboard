@@ -15,7 +15,13 @@ export default function NodeCard({ name, id, status, pod }: NodeProps) {
         <span class="p-3 text-xl font-semibold">{name}</span>
         <span class="p-3 text-md font-regular">{id}</span>
         <span class="p-3 text-lg font-regular">Within {pod.name}</span>
-        <span class="p-3 text-lg font-regular">{status.toUpperCase()}</span>
+        <span class="p-3 text-lg font-regular">
+          {status === "idle" ? (
+            <a class="text-green-500">IDLE</a>
+          ) : (
+            <a class="text-orange-500">RUNNING</a>
+          )}
+        </span>
       </span>
 
       <div>

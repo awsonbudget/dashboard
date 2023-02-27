@@ -8,13 +8,13 @@ export type JobProps = {
   id: string;
   name: string;
   node: string;
-  status: string;
+  status: "registered" | "running" | "completed" | "aborted";
 };
 
 export type NodeProps = {
   name: string;
   id: string;
-  status: string;
+  status: "idle" | "running";
   pod: Omit<PodProps, "nodes">;
 };
 

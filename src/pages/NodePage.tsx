@@ -22,7 +22,7 @@ const NodePage = (props: Props) => {
         <img
           src={ArrowIcon}
           class="h-10 w-10 mx-9 m-3 rotate-180 hover:bg-blue-100 rounded-xl"
-          onClick={async () => {
+          onClick={() => {
             navigate("/");
           }}
         />
@@ -31,7 +31,7 @@ const NodePage = (props: Props) => {
       <div class="pt-3 px-10 font-Inter text-4xl font-semibold">All Jobs</div>
 
       <div class="pt-4 px-10 grid grid-cols-1 gap-8">
-        {props.jobs.map((job: JobProps, i: number) => (
+        {props.jobs.map((job: JobProps) => (
           // TODO: filter jobs by node id
           <JobCard
             id={job.id}

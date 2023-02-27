@@ -19,7 +19,19 @@ export default function JobCard({ name, id, node, status }: JobProps) {
         ) : (
           <span class="p-3 text-lg font-regular">Under {node}</span>
         )}
-        <span class="p-3 text-lg font-regular">{status.toUpperCase()}</span>
+        <span class="p-3 text-lg font-regular">
+          {() => {
+            if (status === "registered") {
+              return <a class="text-blue-500">REGISTERED</a>;
+            } else if (status === "running") {
+              return <a class="text-orange-500">RUNNING</a>;
+            } else if (status === "completed") {
+              return <a class="text-green-500">COMPLETED</a>;
+            } else {
+              return <a class="text-red-500">ABORTED</a>;
+            }
+          }}
+        </span>
       </span>
 
       <div>

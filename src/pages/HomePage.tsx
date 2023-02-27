@@ -18,16 +18,16 @@ const HomePage = (props: Props) => {
 
       <div class="pt-10 px-10 font-Inter text-4xl font-semibold">All Pods</div>
 
-      <div class="pt-4 px-10 grid lg:grid-cols-2 gap-8">
-        {props.pods.map((pod: PodProps, i: number) => (
+      <div class="pt-4 px-10 grid xl:grid-cols-2 2xl:grid-cols-3 gap-8">
+        {props.pods.map((pod: PodProps) => (
           <PodCard name={pod.name} id={pod.id} nodes={pod.nodes} />
         ))}
       </div>
 
       <div class="pt-10 px-10 font-Inter text-4xl font-semibold">All Nodes</div>
 
-      <div class="pt-4 px-10 grid xl:grid-cols-2 gap-8">
-        {props.nodes.map((node: NodeProps, i: number) => (
+      <div class="pt-4 px-10 grid xl:grid-cols-2 2xl:grid-cols-3 gap-8">
+        {props.nodes.map((node: NodeProps) => (
           <NodeCard
             name={node.name}
             id={node.id}
@@ -38,8 +38,8 @@ const HomePage = (props: Props) => {
       </div>
 
       <div class="pt-10 px-10 font-Inter text-4xl font-semibold">All Jobs</div>
-      <div class="pt-4 px-10 grid grid-cols-1 gap-8">
-        {props.jobs.map((job: JobProps, i: number) => (
+      <div class="pt-4 px-10 grid 2xl:grid-cols-2 gap-8">
+        {props.jobs.map((job: JobProps) => (
           <JobCard
             id={job.id}
             name={job.name}
