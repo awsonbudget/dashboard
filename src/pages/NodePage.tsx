@@ -41,6 +41,7 @@ const NodePage = (props: Props) => {
           />
         ))}
       </div>
+      <div class="py-4" />
     </div>
   );
 };

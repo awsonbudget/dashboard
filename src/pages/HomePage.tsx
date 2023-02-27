@@ -48,6 +48,7 @@ const HomePage = (props: Props) => {
           />
         ))}
       </div>
+      <div class="py-4" />
     </div>
   );
 };

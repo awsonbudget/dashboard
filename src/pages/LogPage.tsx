@@ -65,6 +65,7 @@ const LogPage = (props: Props) => {
       <div class="flex card mx-10">
         <div class="p-12 font-Inter text-md whitespace-pre-wrap">{log}</div>
       </div>
+      <div class="py-4" />
     </div>
   );
 };
