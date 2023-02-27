@@ -1,6 +1,8 @@
 import { fetchJobLog, fetchNodeLog } from "../api/manager";
 import { useParams, useNavigate } from "@solidjs/router";
 import { createSignal } from "solid-js";
+import RefreshIcon from "../assets/refresh.svg";
+import ArrowIcon from "../assets/arrow.svg";
 
 type Props = {};
 
@@ -18,29 +20,42 @@ const LogPage = (props: Props) => {
   const [log, setLog] = createSignal<string>("no log found");
 
   return (
-    <div>
-      <div class="p-3">LogPage</div>
-      <button onClick={() => navigate("/")}>Back</button>
-      <div
-        class="p-3"
-        onClick={() => {
-          if (type === "node") {
-            fetchNodeLog(id).then((log) => {
-              setLog(log.data);
-            });
-          } else {
-            fetchJobLog(id).then((log) => {
-              setLog(log.data);
-            });
-          }
-        }}
-      >
-        Refresh
+    <div class="bg-gradient-to-b from-gray-100 to-gray-300 min-h-screen">
+      <div class="pt-10 px-10 font-Inter text-4xl font-semibold">Job log</div>
+
+      <div class="flex items-center">
+        <img
+          src={ArrowIcon}
+          class="h-10 w-10 mx-9 m-3 rotate-180 hover:bg-blue-100"
+          onClick={() => {
+            navigate("/");
+          }}
+        />
+
+        <img
+          src={RefreshIcon}
+          class="h-10 w-10 hover:bg-blue-100"
+          onClick={() => {
+            if (type === "node") {
+              fetchNodeLog(id).then((res) => {
+                setLog(res.data);
+              });
+            } else if (type === "job") {
+              fetchJobLog(id).then((res) => {
+                setLog(res.data);
+              });
+            }
+          }}
+        ></img>
       </div>
-      <div class="p-3">
+
+      <div class="px-10 p-3 font-Inter text-lg font-medium">
         {type} : {id}
       </div>
-      <div class="p-3 whitespace-pre-wrap">{log}</div>
+
+      <div class="flex card mx-10">
+        <div class="p-12 font-Inter text-md whitespace-pre-wrap">{log}</div>
+      </div>
     </div>
   );
 };

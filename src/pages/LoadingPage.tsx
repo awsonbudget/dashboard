@@ -28,7 +28,7 @@ const LoadingPage = ({ delay }: { delay: number }) => {
         </svg>
         <span class="sr-only">Loading...</span>
       </div>
-      <div>
+      <div class="font-Inter text-xl font-semibold">
         {show() ? "Taking longer than expected, is the cloud initialized?" : ""}
       </div>
     </div>
