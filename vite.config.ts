@@ -1,11 +1,12 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
-import basicSsl from "@vitejs/plugin-basic-ssl";
+import { defineConfig } from 'vite';
+import solidPlugin from 'vite-plugin-solid';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), basicSsl()],
+  plugins: [solidPlugin()],
   server: {
     port: 3000,
+  },
+  build: {
+    target: 'esnext',
   },
 });

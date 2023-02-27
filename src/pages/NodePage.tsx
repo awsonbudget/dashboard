@@ -1,12 +1,14 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate} from "@solidjs/router";
 import { JobProps } from "../api/type";
 import JobCard from "../components/JobCard";
+import { VsDebugLineByLine } from "solid-icons/vs";
 
 type Props = {
   jobs: JobProps[];
 };
 
 const NodePage = (props: Props) => {
+  const navigate = useNavigate();
   const { id } = useParams();
   if (id === undefined) {
     return <div>Invalid Query</div>;
@@ -14,15 +16,20 @@ const NodePage = (props: Props) => {
 
   return (
     // TODO: add a print log button
-    <div className="bg-gradient-to-b from-gray-100 to-gray-300 min-h-screen">
-      <div className="pt-10 px-10 font-Inter text-5xl font-semibold">
+    <div class="bg-gradient-to-b from-gray-100 to-gray-300 min-h-screen">
+      <div class="pt-10 px-10 font-Inter text-5xl font-semibold">
         Node {id}
+        <VsDebugLineByLine
+          onClick={async () => {
+            navigate("/node/" + id + "/log");
+          }}
+        />
       </div>
-      <div className="pt-10 px-10 font-Inter text-4xl font-semibold">
+      <div class="pt-10 px-10 font-Inter text-4xl font-semibold">
         All Jobs
       </div>
 
-      <div className="pt-4 px-10 grid grid-cols-1 gap-8">
+      <div class="pt-4 px-10 grid grid-cols-1 gap-8">
         {props.jobs.map((job: JobProps, i: number) => (
           // TODO: filter jobs by node id
           <JobCard
@@ -30,7 +37,6 @@ const NodePage = (props: Props) => {
             name={job.name}
             node={job.node}
             status={job.status}
-            key={i}
           />
         ))}
       </div>

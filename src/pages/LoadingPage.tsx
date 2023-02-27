@@ -1,22 +1,18 @@
-import { useEffect, useState } from "react";
+import { createSignal } from "solid-js";
 
 const LoadingPage = ({ delay }: { delay: number }) => {
-  const [show, setShow] = useState(false);
-  useEffect(() => {
-    let timer = setTimeout(() => {
-      setShow(true);
-    }, delay * 1000);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
+  const [show, setShow] = createSignal(false);
+
+  setTimeout(() => {
+    setShow(true);
+  }, delay);
   return (
-    <div className="grid place-items-center">
-      <div className="py-2"></div>
+    <div class="grid place-items-center">
+      <div class="py-2"></div>
       <div role="status">
         <svg
           aria-hidden="true"
-          className="w-8 h-8 m-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+          class="w-8 h-8 m-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -30,10 +26,10 @@ const LoadingPage = ({ delay }: { delay: number }) => {
             fill="currentFill"
           />
         </svg>
-        <span className="sr-only">Loading...</span>
+        <span class="sr-only">Loading...</span>
       </div>
       <div>
-        {show ? "Taking longer than expected, is the cloud initialized?" : ""}
+        {show() ? "Taking longer than expected, is the cloud initialized?" : ""}
       </div>
     </div>
   );
