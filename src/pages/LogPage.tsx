@@ -1,6 +1,6 @@
-import { fetchJobLog, fetchNodeLog } from "../api/manager";
 import { useParams, useNavigate } from "@solidjs/router";
 import { createSignal, onMount } from "solid-js";
+import { fetchJobLog, fetchNodeLog } from "../api/manager";
 import RefreshIcon from "../assets/refresh.svg";
 import ArrowIcon from "../assets/arrow.svg";
 

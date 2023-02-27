@@ -1,3 +1,5 @@
+import createWebsocket from "@solid-primitives/websocket";
+import { createSignal } from "solid-js";
 import { Route, Router, Routes } from "@solidjs/router";
 import HomePage from "./pages/HomePage";
 import PodPage from "./pages/PodPage";
@@ -5,8 +7,7 @@ import NodePage from "./pages/NodePage";
 import LogPage from "./pages/LogPage";
 import { JobProps, NodeProps, PodProps } from "./api/type";
 import LoadingPage from "./pages/LoadingPage";
-import createWebsocket from "@solid-primitives/websocket";
-import { createSignal } from "solid-js";
+import { ws } from "./api/manager";
 
 function App() {
   const [pods, setPods] = createSignal<PodProps[]>([]);
@@ -15,7 +16,7 @@ function App() {
   const [initialized, setInitialized] = createSignal<boolean>(false);
 
   const [connect, disconnect, send, state] = createWebsocket(
-    "ws://127.0.0.1:5000/internal/update/",
+    ws,
     (msg) => {
       const incoming = JSON.parse(msg.data);
       if (incoming.type === "job") {

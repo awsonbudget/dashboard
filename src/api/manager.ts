@@ -2,7 +2,9 @@ import axios from "axios";
 import { JobProps, LogProps, NodeProps, PodProps } from "./type";
 
 const addr = import.meta.env.VITE_MANAGER;
-const manager = (import.meta.env.PROD ? "http://" : "http://") + addr;
+const manager = (import.meta.env.PROD ? "https://" : "http://") + addr;
+export const ws =
+  (import.meta.env.PROD ? "wss://" : "ws://") + addr + "/internal/update/";
 
 if (manager === undefined) {
   throw new Error("Missing VITE_MANAGER env variable");

@@ -1,7 +1,7 @@
+import { useNavigate } from "@solidjs/router";
+import { PodProps } from "../api/type";
 import PodIcon from "../assets/pod.svg";
 import ArrowIcon from "../assets/arrow.svg";
-import { PodProps } from "../api/type";
-import { useNavigate } from "@solidjs/router";
 
 export default function PodCard({ name, id, nodes }: PodProps) {
   const navigate = useNavigate();

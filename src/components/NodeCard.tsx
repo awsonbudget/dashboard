@@ -1,7 +1,7 @@
 import { useNavigate } from "@solidjs/router";
-import NodeIcon from "../assets/node.svg";
 import { NodeProps } from "../api/type";
 import ArrowIcon from "../assets/arrow.svg";
+import NodeIcon from "../assets/node.svg";
 
 export default function NodeCard({ name, id, status, pod }: NodeProps) {
   const navigate = useNavigate();
