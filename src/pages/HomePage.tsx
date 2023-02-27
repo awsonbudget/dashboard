@@ -11,14 +11,14 @@ type Props = {
 
 const HomePage = (props: Props) => {
   return (
-    <div class="bg-gradient-to-b from-gray-100 to-gray-300 min-h-screen">
+    <div class="bg-gradient-to-b from-gray-100 to-gray-300 min-h-screen min-w-max">
       <div class="pt-10 px-10 font-Inter text-5xl font-semibold">
         Cloud Dashboard
       </div>
 
       <div class="pt-10 px-10 font-Inter text-4xl font-semibold">All Pods</div>
 
-      <div class="pt-4 px-10 grid xl:grid-cols-2 2xl:grid-cols-3 gap-8">
+      <div class="pt-4 px-10 grid xl:grid-cols-2 4xl:grid-cols-3 gap-8">
         {props.pods.map((pod: PodProps) => (
           <PodCard name={pod.name} id={pod.id} nodes={pod.nodes} />
         ))}
@@ -26,7 +26,7 @@ const HomePage = (props: Props) => {
 
       <div class="pt-10 px-10 font-Inter text-4xl font-semibold">All Nodes</div>
 
-      <div class="pt-4 px-10 grid xl:grid-cols-2 2xl:grid-cols-3 gap-8">
+      <div class="pt-4 px-10 grid xl:grid-cols-2 4xl:grid-cols-3 gap-8">
         {props.nodes.map((node: NodeProps) => (
           <NodeCard
             name={node.name}
@@ -38,7 +38,7 @@ const HomePage = (props: Props) => {
       </div>
 
       <div class="pt-10 px-10 font-Inter text-4xl font-semibold">All Jobs</div>
-      <div class="pt-4 px-10 grid 2xl:grid-cols-2 gap-8">
+      <div class="pt-4 px-10 grid 4xl:grid-cols-2 gap-8">
         {props.jobs.map((job: JobProps) => (
           <JobCard
             id={job.id}
