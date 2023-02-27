@@ -1,6 +1,6 @@
 import { fetchJobLog, fetchNodeLog } from "../api/manager";
 import { useParams, useNavigate } from "@solidjs/router";
-import { createSignal } from "solid-js";
+import { createSignal, onMount } from "solid-js";
 import RefreshIcon from "../assets/refresh.svg";
 import ArrowIcon from "../assets/arrow.svg";
 
@@ -16,8 +16,25 @@ const LogPage = (props: Props) => {
   ) {
     return <div>Invalid Query</div>;
   }
+  const getLog = () => {
+    if (type === "node") {
+      fetchNodeLog(id).then((res) => {
+        setLog(res.data);
+      });
+    } else if (type === "job") {
+      fetchJobLog(id).then((res) => {
+        setLog(res.data);
+      });
+    }
+  };
+  onMount(() => {
+    getLog();
+  });
 
-  const [log, setLog] = createSignal<string>("no log found");
+  const [log, setLog] = createSignal<string>();
+  window.onfocus = () => {
+    getLog();
+  };
 
   return (
     <div class="bg-gradient-to-b from-gray-100 to-gray-300 min-h-screen">
@@ -36,15 +53,7 @@ const LogPage = (props: Props) => {
           src={RefreshIcon}
           class="h-10 w-10 hover:bg-blue-100"
           onClick={() => {
-            if (type === "node") {
-              fetchNodeLog(id).then((res) => {
-                setLog(res.data);
-              });
-            } else if (type === "job") {
-              fetchJobLog(id).then((res) => {
-                setLog(res.data);
-              });
-            }
+            getLog();
           }}
         ></img>
       </div>
