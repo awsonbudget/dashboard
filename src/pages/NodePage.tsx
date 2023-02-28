@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "@solidjs/router";
 import { JobProps } from "../api/type";
 import JobCard from "../components/JobCard";
 import ArrowIcon from "../assets/arrow.svg";
+import PrintLogIcon from "../assets/printlog.svg";
 
 type Props = {
   jobs: JobProps[];
@@ -21,11 +22,21 @@ const NodePage = (props: Props) => {
       <div class="flex items-center">
         <img
           src={ArrowIcon}
-          class="h-10 w-10 mx-9 m-3 rotate-180 hover:bg-blue-100 rounded-xl"
+          class="h-10 w-10 mx-9 m-5 rotate-180 hover:bg-blue-100 active:bg-blue-200 rounded-xl"
           onClick={() => {
             navigate("/");
           }}
         />
+
+        <div>
+          <img
+            src={PrintLogIcon}
+            onClick={() => {
+              navigate("/node/" + id + "/log");
+            }}
+            class="h-10 w-40 m-2"
+          />
+        </div>
       </div>
 
       <div class="pt-3 px-10 font-Inter text-4xl font-semibold">All Jobs</div>

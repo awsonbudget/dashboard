@@ -38,12 +38,12 @@ const LogPage = (props: Props) => {
 
   return (
     <div class="bg-gradient-to-b from-gray-100 to-gray-300 min-h-screen">
-      <div class="pt-10 px-10 font-Inter text-4xl font-semibold">Job log</div>
+      <div class="pt-10 px-10 font-Inter text-5xl font-semibold">Logs</div>
 
       <div class="flex items-center">
         <img
           src={ArrowIcon}
-          class="h-10 w-10 mx-9 m-3 rotate-180 hover:bg-blue-100 rounded-xl"
+          class="h-10 w-10 mx-9 m-5 rotate-180 hover:bg-blue-100 active:bg-blue-200 rounded-xl"
           onClick={() => {
             navigate("/");
           }}
@@ -51,18 +51,18 @@ const LogPage = (props: Props) => {
 
         <img
           src={RefreshIcon}
-          class="h-10 w-10 hover:bg-blue-100 rounded-xl"
+          class="h-10 w-10 hover:bg-blue-100 active:bg-blue-200 rounded-xl "
           onClick={() => {
             getLog();
           }}
         ></img>
       </div>
 
-      <div class="px-10 p-3 font-Inter text-lg font-medium">
-        {type} : {id}
+      <div class="px-10 p-3 font-Inter text-xl font-medium">
+        Log of {type} : {id}
       </div>
 
-      <div class="flex card mx-10">
+      <div class="flex card mx-10 my-5">
         <div class="p-12 font-Inter text-md whitespace-pre-wrap">{log}</div>
       </div>
       <div class="py-4" />

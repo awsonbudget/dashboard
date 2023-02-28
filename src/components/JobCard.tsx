@@ -6,7 +6,7 @@ import PrintLogIcon from "../assets/printlog.svg";
 export default function JobCard({ name, id, node, status }: JobProps) {
   const navigate = useNavigate();
   return (
-    <div class="flex card py-2 px-2 justify-around items-center hover:bg-blue-50">
+    <div class="flex card py-2 px-2 justify-around items-center">
       <div>
         <img src={JobIcon} class="h-10 w-9 ml-2" />
       </div>
@@ -22,13 +22,13 @@ export default function JobCard({ name, id, node, status }: JobProps) {
         <span class="p-3 text-lg font-regular">
           {() => {
             if (status === "registered") {
-              return <a class="text-blue-500">REGISTERED</a>;
+              return <a class="text-blue-500 font-medium">Registered</a>;
             } else if (status === "running") {
-              return <a class="text-orange-500">RUNNING</a>;
+              return <a class="text-orange-500 font-medium">Running</a>;
             } else if (status === "completed") {
-              return <a class="text-green-500">COMPLETED</a>;
+              return <a class="text-green-500 font-medium">Completed</a>;
             } else {
-              return <a class="text-red-500">ABORTED</a>;
+              return <a class="text-red-500 font-medium">Aborted</a>;
             }
           }}
         </span>

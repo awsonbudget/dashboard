@@ -6,7 +6,7 @@ import ArrowIcon from "../assets/arrow.svg";
 export default function PodCard({ name, id, nodes }: PodProps) {
   const navigate = useNavigate();
   return (
-    <div class="flex card py-2 px-2 justify-around items-center hover:bg-blue-50">
+    <div class="flex card py-2 px-2 justify-around items-center">
       <div>
         <img src={PodIcon} class="h-10 w-9 m-2 justify-self-start" />
       </div>
@@ -25,7 +25,7 @@ export default function PodCard({ name, id, nodes }: PodProps) {
           onClick={async () => {
             navigate("/pod/" + id);
           }}
-          class="h-10 w-9 m-2 justify-self-end"
+          class="h-10 w-10 m-2 justify-self-end hover:bg-blue-100 active:bg-blue-200 rounded-xl"
         />
       </div>
     </div>
