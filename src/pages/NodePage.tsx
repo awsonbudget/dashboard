@@ -17,12 +17,12 @@ const NodePage = (props: Props) => {
 
   return (
     // TODO: add a print log button
-    <div class="bg-gradient-to-b from-gray-100 to-gray-300 min-h-screen">
-      <div class="pt-10 px-10 font-Inter text-5xl font-semibold">Node {id}</div>
+    <div class="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300">
+      <div class="px-10 pt-10 font-Inter text-5xl font-semibold">Node {id}</div>
       <div class="flex items-center">
         <img
           src={ArrowIcon}
-          class="h-10 w-10 mx-9 m-5 rotate-180 hover:bg-blue-100 active:bg-blue-200 rounded-xl"
+          class="m-5 mx-9 h-10 w-10 rotate-180 rounded-xl hover:bg-blue-100 active:bg-blue-200"
           onClick={() => {
             navigate("/");
           }}
@@ -34,14 +34,14 @@ const NodePage = (props: Props) => {
             onClick={() => {
               navigate("/node/" + id + "/log");
             }}
-            class="h-10 w-40 m-2"
+            class="m-2 h-10 w-40"
           />
         </div>
       </div>
 
-      <div class="pt-3 px-10 font-Inter text-4xl font-semibold">All Jobs</div>
+      <div class="px-10 pt-3 font-Inter text-4xl font-semibold">All Jobs</div>
 
-      <div class="pt-4 px-10 grid grid-cols-1 gap-8">
+      <div class="grid grid-cols-1 gap-8 px-10 pt-4">
         {props.jobs.map((job: JobProps) => (
           // TODO: filter jobs by node id
           <JobCard

@@ -6,20 +6,20 @@ import NodeIcon from "../assets/node.svg";
 export default function NodeCard({ name, id, status, pod }: NodeProps) {
   const navigate = useNavigate();
   return (
-    <div class="flex card py-2 px-2 justify-around items-center">
+    <div class="card flex items-center justify-around py-2 px-2">
       <div>
-        <img src={NodeIcon} class="h-10 w-9 m-2 justify-self-start" />
+        <img src={NodeIcon} class="m-2 h-10 w-9 justify-self-start" />
       </div>
 
-      <span class="grow h-10 m-2 justify-self-stretch font-Inter flex items-center">
+      <span class="m-2 flex h-10 grow items-center justify-self-stretch font-Inter">
         <span class="p-3 text-xl font-semibold">{name}</span>
-        <span class="p-3 text-md font-regular">{id}</span>
-        <span class="p-3 text-lg font-regular">Within {pod.name}</span>
-        <span class="p-3 text-lg font-regular">
+        <span class="text-md font-regular p-3">{id}</span>
+        <span class="font-regular p-3 text-lg">Within {pod.name}</span>
+        <span class="font-regular p-3 text-lg">
           {status === "idle" ? (
-            <a class="text-green-500 font-medium">Idle</a>
+            <a class="font-medium text-green-500">Idle</a>
           ) : (
-            <a class="text-orange-500 font-medium">Running</a>
+            <a class="font-medium text-orange-500">Running</a>
           )}
         </span>
       </span>
@@ -30,7 +30,7 @@ export default function NodeCard({ name, id, status, pod }: NodeProps) {
           onClick={async () => {
             navigate("/node/" + id);
           }}
-          class="h-10 w-10 m-2 justify-self-end hover:bg-blue-100 active:bg-blue-200 rounded-xl"
+          class="m-2 h-10 w-10 justify-self-end rounded-xl hover:bg-blue-100 active:bg-blue-200"
         />
       </div>
     </div>

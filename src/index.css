@@ -5,5 +5,5 @@
 @tailwind utilities;
 
 .card {
-  @apply bg-white rounded-xl shadow-xl;
+  @apply rounded-xl bg-white shadow-xl;
 }
