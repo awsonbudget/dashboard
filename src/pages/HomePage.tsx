@@ -20,7 +20,11 @@ const HomePage = (props: Props) => {
 
       <div class="grid gap-8 px-10 pt-4 xl:grid-cols-2 4xl:grid-cols-3">
         {props.pods.map((pod: PodProps) => (
-          <PodCard name={pod.name} id={pod.id} nodes={pod.nodes} />
+          <PodCard
+            pod_name={pod.pod_name}
+            pod_id={pod.pod_id}
+            total_nodes={pod.total_nodes}
+          />
         ))}
       </div>
 
@@ -29,10 +33,10 @@ const HomePage = (props: Props) => {
       <div class="grid gap-8 px-10 pt-4 xl:grid-cols-2 4xl:grid-cols-3">
         {props.nodes.map((node: NodeProps) => (
           <NodeCard
-            name={node.name}
-            id={node.id}
-            status={node.status}
-            pod={node.pod}
+            node_name={node.node_name}
+            node_id={node.node_id}
+            node_status={node.node_status}
+            pod_data={node.pod_data}
           />
         ))}
       </div>

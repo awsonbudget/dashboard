@@ -3,7 +3,7 @@ import { PodProps } from "../api/type";
 import PodIcon from "../assets/pod.svg";
 import ArrowIcon from "../assets/arrow.svg";
 
-export default function PodCard({ name, id, nodes }: PodProps) {
+export default function PodCard({ pod_name, pod_id, total_nodes }: PodProps) {
   const navigate = useNavigate();
   return (
     <div class="card flex items-center justify-around py-2 px-2">
@@ -12,10 +12,10 @@ export default function PodCard({ name, id, nodes }: PodProps) {
       </div>
 
       <div class="m-2 flex h-10 grow items-center justify-self-stretch font-Inter">
-        <span class="p-3 text-xl font-semibold">{name}</span>
-        <span class="text-md font-regular p-3">{id}</span>
+        <span class="p-3 text-xl font-semibold">{pod_name}</span>
+        <span class="text-md font-regular p-3">{pod_id}</span>
         <span class="font-regular p-3 text-lg">
-          {nodes} {nodes > 1 ? "nodes" : "node"} online
+          {total_nodes} {total_nodes > 1 ? "nodes" : "node"} online
         </span>
       </div>
 
@@ -23,7 +23,7 @@ export default function PodCard({ name, id, nodes }: PodProps) {
         <img
           src={ArrowIcon}
           onClick={async () => {
-            navigate("/pod/" + id);
+            navigate("/pod/" + pod_id);
           }}
           class="m-2 h-10 w-10 justify-self-end rounded-xl hover:bg-blue-100 active:bg-blue-200"
         />

@@ -12,14 +12,14 @@ export type JobProps = {
 };
 
 export type NodeProps = {
-  name: string;
-  id: string;
-  status: "idle" | "running";
-  pod: Omit<PodProps, "nodes">;
+  node_name: string;
+  node_id: string;
+  node_status: "idle" | "running";
+  pod_data: Omit<PodProps, "nodes">;
 };
 
 export type PodProps = {
-  name: string;
-  id: number;
-  nodes: number;
+  pod_name: string;
+  pod_id: number;
+  total_nodes: number;
 };
