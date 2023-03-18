@@ -11,7 +11,7 @@ type Props = {
 
 const HomePage = (props: Props) => {
   return (
-    <div class="min-h-screen min-w-max bg-gradient-to-b from-gray-100 to-gray-300">
+    <div class="min-h-screen min-w-max bg-gradient-to-r from-gray-100 to-gray-300">
       <div class="px-10 pt-10 font-Inter text-5xl font-semibold">
         Cloud Dashboard
       </div>
