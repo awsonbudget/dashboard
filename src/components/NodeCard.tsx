@@ -12,12 +12,12 @@ export default function NodeCard({
   const navigate = useNavigate();
 
   let color: string;
-  if (node_status === "idle" || node_status === "new") {
+  if (node_status === "idle" || node_status === "online") {
     color = "green";
-  } else if (node_status === "running" || node_status === "online") {
+  } else if (node_status === "running" || node_status === "paused") {
     color = "orange";
-  } else if (node_status === "paused") {
-    color = "red";
+  } else if (node_status === "new") {
+    color = "blue";
   } else {
     // this should never happen!
     console.log("something went wrong with node status");
