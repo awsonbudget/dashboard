@@ -21,5 +21,6 @@ export type NodeProps = {
 export type PodProps = {
   pod_name: string;
   pod_id: number;
+  pod_type: string;
   total_nodes: number;
 };

@@ -23,6 +23,7 @@ const HomePage = (props: Props) => {
           <PodCard
             pod_name={pod.pod_name}
             pod_id={pod.pod_id}
+            pod_type={pod.pod_type}
             total_nodes={pod.total_nodes}
           />
         ))}
