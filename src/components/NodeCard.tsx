@@ -10,7 +10,20 @@ export default function NodeCard({
   pod_data,
 }: NodeProps) {
   const navigate = useNavigate();
-  console.log(node_status);
+
+  let color: string;
+  if (node_status === "idle" || node_status === "new") {
+    color = "green";
+  } else if (node_status === "running" || node_status === "online") {
+    color = "orange";
+  } else if (node_status === "paused") {
+    color = "red";
+  } else {
+    // this should never happen!
+    console.log("something went wrong with node status");
+    color = "gray";
+  }
+
   return (
     <div class="card flex items-center justify-around py-2 px-2">
       <div>
@@ -21,12 +34,8 @@ export default function NodeCard({
         <span class="p-3 text-xl font-semibold">{node_name}</span>
         <span class="text-md font-regular p-3">{node_id}</span>
         <span class="font-regular p-3 text-lg">Within {pod_data.pod_name}</span>
-        <span class="font-regular p-3 text-lg">
-          {node_status === "idle" ? (
-            <a class="font-medium text-green-500">Idle</a>
-          ) : (
-            <a class="font-medium text-orange-500">Running</a>
-          )}
+        <span class={`p-3 text-lg font-medium text-${color}-500`}>
+          {node_status}
         </span>
       </span>
 

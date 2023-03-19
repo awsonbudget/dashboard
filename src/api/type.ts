@@ -14,7 +14,7 @@ export type JobProps = {
 export type NodeProps = {
   node_name: string;
   node_id: string;
-  node_status: "idle" | "running";
+  node_status: "idle" | "running" | "new" | "online" | "paused";
   pod_data: Omit<PodProps, "nodes">;
 };
 
