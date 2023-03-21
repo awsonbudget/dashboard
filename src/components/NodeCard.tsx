@@ -1,11 +1,13 @@
 import { useNavigate } from "@solidjs/router";
 import { NodeProps } from "../api/type";
 import ArrowIcon from "../assets/arrow.svg";
+import ServerIcon from "../assets/server.svg";
 import NodeIcon from "../assets/node.svg";
 
 export default function NodeCard({
   node_name,
   node_id,
+  node_type,
   node_status,
   pod_data,
 }: NodeProps) {
@@ -27,7 +29,11 @@ export default function NodeCard({
   return (
     <div class="card flex items-center justify-around py-2 px-2">
       <div>
-        <img src={NodeIcon} class="m-2 h-10 w-9 justify-self-start" />
+        {node_type === "job" ? (
+          <img src={NodeIcon} class="m-2 h-10 w-9 justify-self-start" />
+        ) : (
+          <img src={ServerIcon} class="m-2 h-10 w-9 justify-self-start" />
+        )}
       </div>
 
       <span class="m-2 flex h-10 grow items-center justify-self-stretch font-Inter">
@@ -43,7 +49,7 @@ export default function NodeCard({
         <img
           src={ArrowIcon}
           onClick={async () => {
-            navigate("/node/" + node_id);
+            navigate("/pod/" + pod_data.pod_id + "/node/" + node_id);
           }}
           class="m-2 h-10 w-10 justify-self-end rounded-xl hover:bg-blue-100 active:bg-blue-200"
         />

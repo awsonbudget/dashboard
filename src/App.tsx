@@ -60,10 +60,13 @@ function App() {
           }
         />
         <Route
-          path="/pod/:id"
+          path="/pod/:pod_id"
           element={<PodPage nodes={nodes()} jobs={jobs()} />}
         />
-        <Route path="/node/:id" element={<NodePage jobs={jobs()} />} />
+        <Route
+          path="/pod/:pod_id/node/:node_id"
+          element={<NodePage jobs={jobs()} />}
+        />
         <Route path="/:type/:id/log" element={<LogPage />} />
       </Routes>
     </Router>

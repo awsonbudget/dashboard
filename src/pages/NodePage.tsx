@@ -10,15 +10,17 @@ type Props = {
 
 const NodePage = (props: Props) => {
   const navigate = useNavigate();
-  const { id } = useParams();
-  if (id === undefined) {
+  const { pod_id, node_id } = useParams();
+  if (node_id === undefined || pod_id === undefined) {
     return <div>Invalid Query</div>;
   }
 
   return (
     // TODO: add a print log button
     <div class="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300">
-      <div class="px-10 pt-10 font-Inter text-5xl font-semibold">Node {id}</div>
+      <div class="px-10 pt-10 font-Inter text-5xl font-semibold">
+        Node {node_id}
+      </div>
       <div class="flex items-center">
         <img
           src={ArrowIcon}
@@ -27,12 +29,11 @@ const NodePage = (props: Props) => {
             navigate("/");
           }}
         />
-
         <div>
           <img
             src={PrintLogIcon}
             onClick={() => {
-              navigate("/node/" + id + "/log");
+              navigate("/node/" + node_id + "/log");
             }}
             class="m-2 h-10 w-40"
           />
