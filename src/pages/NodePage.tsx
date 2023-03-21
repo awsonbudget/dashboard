@@ -67,10 +67,12 @@ const NodePage = (props: Props) => {
       ) : (
         () => {
           const [stat, setStat] = createSignal<StatsProps | null>(null);
+          const [loaded, setLoaded] = createSignal(false);
           createEffect(async () => {
             const interval = setInterval(async () => {
               const resp = await fetchStats(pod_id, node_id);
               setStat(resp);
+              setLoaded(true);
             }, 2000);
             onCleanup(() => clearInterval(interval));
           });
@@ -79,25 +81,53 @@ const NodePage = (props: Props) => {
             return <div></div>;
           }
           return (
-            <div>
-              <div class="card mx-10 my-5 flex">
-                <div class="text-md whitespace-pre-wrap p-12 font-Inter">
-                  <span class="m-2 items-center font-Inter">
-                    <span class="block p-2 text-xl font-semibold">
-                      Server {node_id}
+            <div class="grid grid-cols-1 gap-8 px-10 pt-4">
+              <div class="w-1/2 rounded-md bg-white p-8 px-10 shadow-md lg:w-1/3">
+                <h2 class="mb-4 text-xl font-medium text-gray-800">
+                  {!loaded() ? "Loading" : "Server " + node_id}
+                </h2>
+                <div class="mb-6 flex justify-between">
+                  <div class="flex items-center">
+                    <div class="mr-3 h-4 w-4 rounded-full bg-green-500"></div>
+                    <span class="text-lg font-medium text-gray-800">
+                      CPU Usage
                     </span>
-                    <span class="font-regular block p-2 text-lg">
-                      CPU Usage - {stat()?.cpu_usage}%
+                  </div>
+                  <span class="text-lg font-medium text-gray-800">
+                    {Number(stat()?.cpu_usage.toFixed(4))}%
+                  </span>
+                </div>
+                <div class="mb-6 flex justify-between">
+                  <div class="flex items-center">
+                    <div class="mr-3 h-4 w-4 rounded-full bg-blue-500"></div>
+                    <span class="text-lg font-medium text-gray-800">
+                      Memory Usage
                     </span>
-                    <span class="font-regular block p-2 text-lg">
-                      Memory Usage - {stat()?.mem_usage} Bytes
+                  </div>
+                  <span class="text-lg font-medium text-gray-800">
+                    {stat()?.mem_usage} B
+                  </span>
+                </div>
+                <div class="mb-6 flex justify-between">
+                  <div class="flex items-center">
+                    <div class="mr-3 h-4 w-4 rounded-full bg-yellow-500"></div>
+                    <span class="text-lg font-medium text-gray-800">
+                      Network In
                     </span>
-                    <span class="font-regular block p-2 text-lg">
-                      Network In - {stat()?.network_in} Bytes
+                  </div>
+                  <span class="text-lg font-medium text-gray-800">
+                    {stat()?.network_in} B
+                  </span>
+                </div>
+                <div class="flex justify-between">
+                  <div class="flex items-center">
+                    <div class="mr-3 h-4 w-4 rounded-full bg-purple-500"></div>
+                    <span class="text-lg font-medium text-gray-800">
+                      Network Out
                     </span>
-                    <span class="font-regular block p-2 text-lg">
-                      Network Out - {stat()?.network_out} Bytes
-                    </span>
+                  </div>
+                  <span class="text-lg font-medium text-gray-800">
+                    {stat()?.network_out} B
                   </span>
                 </div>
               </div>
