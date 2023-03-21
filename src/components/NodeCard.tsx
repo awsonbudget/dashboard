@@ -49,7 +49,9 @@ export default function NodeCard({
         <img
           src={ArrowIcon}
           onClick={async () => {
-            navigate("/pod/" + pod_data.pod_id + "/node/" + node_id);
+            navigate(
+              "/pod/" + pod_data.pod_id + "/node/" + node_type + "/" + node_id
+            );
           }}
           class="m-2 h-10 w-10 justify-self-end rounded-xl hover:bg-blue-100 active:bg-blue-200"
         />

@@ -23,9 +23,9 @@ export const fetchNode = async (): Promise<NodeProps[]> => {
 };
 
 export const fetchStats = async (
-  pod_id: number,
-  node_id: number
-): Promise<StatsProps[]> => {
+  pod_id: string,
+  node_id: string
+): Promise<StatsProps> => {
   return await axios
     .get(manager + "/cloud/server/", {
       params: {
@@ -34,7 +34,8 @@ export const fetchStats = async (
       },
     })
     .then((response) => {
-      return response.data.data;
+      console.log(response.data.data[node_id][0]);
+      return response.data.data[node_id][0];
     });
 };
 
