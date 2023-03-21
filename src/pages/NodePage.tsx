@@ -67,17 +67,11 @@ const NodePage = (props: Props) => {
       ) : (
         () => {
           const [stat, setStat] = createSignal<StatsProps | null>(null);
-          onMount(async () => {
-            const resp = await fetchStats(pod_id, node_id);
-            setStat(resp);
-            console.log(stat());
-          });
-
           createEffect(async () => {
             const interval = setInterval(async () => {
               const resp = await fetchStats(pod_id, node_id);
               setStat(resp);
-            }, 1000);
+            }, 2000);
             onCleanup(() => clearInterval(interval));
           });
 
