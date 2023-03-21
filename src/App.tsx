@@ -9,12 +9,12 @@ import { JobProps, NodeProps, PodProps } from "./api/type";
 import LoadingPage from "./pages/LoadingPage";
 import { ws } from "./api/manager";
 
-function App() {
-  const [pods, setPods] = createSignal<PodProps[]>([]);
-  const [nodes, setNodes] = createSignal<NodeProps[]>([]);
-  const [jobs, setJobs] = createSignal<JobProps[]>([]);
-  const [initialized, setInitialized] = createSignal<boolean>(false);
+export const [pods, setPods] = createSignal<PodProps[]>([]);
+export const [nodes, setNodes] = createSignal<NodeProps[]>([]);
+export const [jobs, setJobs] = createSignal<JobProps[]>([]);
 
+function App() {
+  const [initialized, setInitialized] = createSignal<boolean>(false);
   const [connect, disconnect, send, state] = createWebsocket(
     ws,
     (msg) => {
@@ -22,17 +22,17 @@ function App() {
       if (incoming.type === "job") {
         setInitialized(true);
         const jobs: JobProps[] = incoming.data;
-        console.log(jobs);
+        // console.log(jobs);
         setJobs(jobs);
       } else if (incoming.type === "node") {
         setInitialized(true);
         const nodes: NodeProps[] = incoming.data;
-        console.log(nodes);
+        // console.log(nodes);
         setNodes(nodes);
       } else if (incoming.type === "pod") {
         setInitialized(true);
         const pods: PodProps[] = incoming.data;
-        console.log(pods);
+        // console.log(pods);
         setPods(pods);
       } else if (incoming.type === "error") {
         setInitialized(false);
@@ -45,7 +45,7 @@ function App() {
     connect();
   };
 
-  console.log(initialized());
+  // console.log(initialized());
   return (
     <Router>
       <Routes>
@@ -60,10 +60,13 @@ function App() {
           }
         />
         <Route
-          path="/pod/:id"
+          path="/pod/:pod_id"
           element={<PodPage nodes={nodes()} jobs={jobs()} />}
         />
-        <Route path="/node/:id" element={<NodePage jobs={jobs()} />} />
+        <Route
+          path="/pod/:pod_id/node/:node_type/:node_id"
+          element={<NodePage jobs={jobs()} />}
+        />
         <Route path="/:type/:id/log" element={<LogPage />} />
       </Routes>
     </Router>

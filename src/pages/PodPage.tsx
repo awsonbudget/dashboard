@@ -10,15 +10,17 @@ type Props = {
 };
 
 const PodPage = (props: Props) => {
-  const { id } = useParams();
+  const { pod_id } = useParams();
   const navigate = useNavigate();
-  if (id === undefined) {
+  if (pod_id === undefined) {
     return <div>Invalid Query</div>;
   }
 
   return (
     <div class="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300">
-      <div class="px-10 pt-10 font-Inter text-5xl font-semibold">Pod {id}</div>
+      <div class="px-10 pt-10 font-Inter text-5xl font-semibold">
+        Pod {pod_id}
+      </div>
       <div class="flex items-center">
         <img
           src={ArrowIcon}
@@ -32,11 +34,14 @@ const PodPage = (props: Props) => {
       <div class="px-10 pt-3 font-Inter text-4xl font-semibold">All Nodes</div>
       <div class="grid gap-8 px-10 pt-4 xl:grid-cols-2">
         {props.nodes
-          .filter((node: NodeProps) => node.pod_data.pod_id.toString() === id)
+          .filter(
+            (node: NodeProps) => node.pod_data.pod_id.toString() === pod_id
+          )
           .map((node: NodeProps) => (
             <NodeCard
               node_name={node.node_name}
               node_id={node.node_id}
+              node_type={node.node_type}
               node_status={node.node_status}
               pod_data={node.pod_data}
             />

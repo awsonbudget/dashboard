@@ -1,5 +1,5 @@
 import axios from "axios";
-import { JobProps, LogProps, NodeProps, PodProps } from "./type";
+import { JobProps, LogProps, NodeProps, PodProps, StatsProps } from "./type";
 
 const addr = import.meta.env.VITE_MANAGER;
 const manager = (import.meta.env.PROD ? "https://" : "http://") + addr;
@@ -20,6 +20,23 @@ export const fetchNode = async (): Promise<NodeProps[]> => {
   return await axios.get(manager + "/cloud/node/").then((response) => {
     return response.data.data;
   });
+};
+
+export const fetchStats = async (
+  pod_id: string,
+  node_id: string
+): Promise<StatsProps> => {
+  return await axios
+    .get(manager + "/cloud/server/", {
+      params: {
+        pod_id: pod_id,
+        node_id: node_id,
+      },
+    })
+    .then((response) => {
+      console.log(response.data.data[node_id][0]);
+      return response.data.data[node_id][0];
+    });
 };
 
 export const fetchJob = async (): Promise<JobProps[]> => {

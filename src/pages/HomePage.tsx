@@ -29,17 +29,38 @@ const HomePage = (props: Props) => {
         ))}
       </div>
 
-      <div class="px-10 pt-10 font-Inter text-4xl font-semibold">All Nodes</div>
-
+      <div class="px-10 pt-10 font-Inter text-4xl font-semibold">
+        All Job Nodes
+      </div>
       <div class="grid gap-8 px-10 pt-4 xl:grid-cols-2 4xl:grid-cols-3">
-        {props.nodes.map((node: NodeProps) => (
-          <NodeCard
-            node_name={node.node_name}
-            node_id={node.node_id}
-            node_status={node.node_status}
-            pod_data={node.pod_data}
-          />
-        ))}
+        {props.nodes
+          .filter((node: NodeProps) => node.node_type === "job")
+          .map((node: NodeProps) => (
+            <NodeCard
+              node_name={node.node_name}
+              node_id={node.node_id}
+              node_status={node.node_status}
+              node_type={node.node_type}
+              pod_data={node.pod_data}
+            />
+          ))}
+      </div>
+
+      <div class="px-10 pt-10 font-Inter text-4xl font-semibold">
+        All Server Nodes
+      </div>
+      <div class="grid gap-8 px-10 pt-4 lg:grid-cols-2 3xl:grid-cols-3">
+        {props.nodes
+          .filter((node: NodeProps) => node.node_type === "server")
+          .map((node: NodeProps) => (
+            <NodeCard
+              node_name={node.node_name}
+              node_id={node.node_id}
+              node_status={node.node_status}
+              node_type={node.node_type}
+              pod_data={node.pod_data}
+            />
+          ))}
       </div>
 
       <div class="px-10 pt-10 font-Inter text-4xl font-semibold">All Jobs</div>
@@ -53,7 +74,6 @@ const HomePage = (props: Props) => {
           />
         ))}
       </div>
-      <div class="py-4" />
     </div>
   );
 };

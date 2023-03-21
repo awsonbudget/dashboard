@@ -20,6 +20,7 @@ export default function PodCard({
         <span class="p-3 text-xl font-semibold">{pod_name}</span>
         <span class="text-md font-regular p-3">{pod_id}</span>
         <span class="text-md p-3 font-bold">{pod_type}</span>
+
         <span class="font-regular p-3 text-lg">
           {total_nodes} {total_nodes > 1 ? "nodes" : "node"} online
         </span>
