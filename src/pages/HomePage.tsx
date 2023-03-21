@@ -1,6 +1,7 @@
 import PodCard from "../components/PodCard";
 import NodeCard from "../components/NodeCard";
 import JobCard from "../components/JobCard";
+import ServerCard from "../components/ServerCard";
 import { JobProps, NodeProps, PodProps } from "../api/type";
 
 type Props = {
@@ -29,8 +30,7 @@ const HomePage = (props: Props) => {
         ))}
       </div>
 
-      <div class="px-10 pt-10 font-Inter text-4xl font-semibold">All Nodes</div>
-
+      <div class="px-10 pt-10 font-Inter text-4xl font-semibold">All Job Nodes</div>
       <div class="grid gap-8 px-10 pt-4 xl:grid-cols-2 4xl:grid-cols-3">
         {props.nodes.map((node: NodeProps) => (
           <NodeCard
@@ -38,6 +38,20 @@ const HomePage = (props: Props) => {
             node_id={node.node_id}
             node_status={node.node_status}
             pod_data={node.pod_data}
+          />
+        ))}
+      </div>
+
+      <div class="px-10 pt-10 font-Inter text-4xl font-semibold">
+        All Server Nodes
+      </div>
+      <div class="grid gap-8 px-10 pt-4 lg:grid-cols-2 3xl:grid-cols-3">
+        {props.jobs.map((job: JobProps) => (
+          <ServerCard
+            id={job.id}
+            name={job.name}
+            node={job.node}
+            status={job.status}
           />
         ))}
       </div>
@@ -53,7 +67,7 @@ const HomePage = (props: Props) => {
           />
         ))}
       </div>
-      <div class="py-4" />
+
     </div>
   );
 };
