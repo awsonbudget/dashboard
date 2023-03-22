@@ -40,7 +40,7 @@ export default function JobCard({ name, id, node, status }: JobProps) {
           onClick={() => {
             navigate("/job/" + id + "/log");
           }}
-          class="m-2 h-10 w-40 justify-self-end"
+          class="type=button m-2 h-10 w-40 cursor-pointer justify-self-end"
         />
       </div>
     </div>

@@ -43,7 +43,7 @@ const LogPage = (props: Props) => {
       <div class="flex items-center">
         <img
           src={ArrowIcon}
-          class="m-5 mx-9 h-10 w-10 rotate-180 rounded-xl hover:bg-blue-100 active:bg-blue-200"
+          class="type=button m-5 mx-9 h-10 w-10 rotate-180 cursor-pointer rounded-xl hover:animate-pulse hover:bg-blue-100 active:bg-blue-200"
           onClick={() => {
             navigate("/");
           }}
@@ -51,7 +51,7 @@ const LogPage = (props: Props) => {
 
         <img
           src={RefreshIcon}
-          class="h-10 w-10 rounded-xl hover:bg-blue-100 active:bg-blue-200 "
+          class="type=button h-10 w-10 cursor-pointer rounded-xl hover:animate-pulse hover:bg-blue-100 active:bg-blue-200"
           onClick={() => {
             getLog();
           }}

@@ -32,7 +32,7 @@ export default function PodCard({
           onClick={async () => {
             navigate("/pod/" + pod_id);
           }}
-          class="m-2 h-10 w-10 justify-self-end rounded-xl hover:bg-blue-100 active:bg-blue-200"
+          class="type=button m-2 h-10 w-10 cursor-pointer justify-self-end rounded-xl hover:animate-pulse hover:bg-blue-100 active:bg-blue-200"
         />
       </div>
     </div>
