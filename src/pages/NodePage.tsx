@@ -29,7 +29,9 @@ const NodePage = (props: Props) => {
       <div class="flex items-center">
         <img
           src={ArrowIcon}
-          class="type=button m-5 mx-9 h-10 w-10 rotate-180 cursor-pointer rounded-xl hover:animate-pulse hover:bg-blue-100 active:bg-blue-200"
+          class="type=button type=button delay-50 m-5 mx-9 h-10 w-10 rotate-180 cursor-pointer 
+          rounded-xl transition
+            ease-in-out hover:scale-110 hover:bg-blue-100 active:bg-blue-200"
           onClick={() => {
             navigate("/");
           }}
@@ -41,7 +43,8 @@ const NodePage = (props: Props) => {
               onClick={() => {
                 navigate("/node/" + node_id + "/log");
               }}
-              class="type=button m-2 h-10 w-40 cursor-pointer"
+              class="type=button delay-50 m-2 h-10 w-40 
+                cursor-pointer transition ease-in-out hover:scale-105"
             />
           </div>
         ) : (
@@ -85,7 +88,10 @@ const NodePage = (props: Props) => {
           }
           return (
             <div class="flex gap-8 px-10 pt-4">
-              <div class="card p-10 font-Inter">
+              <div
+                class="card p-10 font-Inter
+                transition duration-275 ease-in-out hover:bg-blue-50"
+              >
                 <h2 class="mb-4 text-3xl font-semibold text-gray-800">
                   Status
                 </h2>

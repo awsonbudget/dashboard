@@ -1,20 +1,12 @@
-<svg
-    class="h-10 w-9 m-2 justify-self-start"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
->
-    <path
-        stroke="#000"
-        stroke-linecap="round"
-        stroke-miterlimit="10"
-        stroke-width="2"
-        d="M17.5 14.219c7.249 0 13.125-2.449 13.125-5.469 0-3.02-5.876-5.469-13.125-5.469S4.375 5.73 4.375 8.75c0 3.02 5.876 5.469 13.125 5.469ZM30.625 14.629c0 3.02-5.879 5.469-13.125 5.469s-13.125-2.449-13.125-5.47m26.25 5.88c0 3.02-5.879 5.469-13.125 5.469s-13.125-2.45-13.125-5.47"
-    />
-    <path
-        stroke="#000"
-        stroke-linecap="round"
-        stroke-miterlimit="10"
-        stroke-width="2"
-        d="M4.375 8.698v17.604c0 2.991 5.879 5.417 13.125 5.417s13.125-2.426 13.125-5.417V8.698"
-    />
+<svg 
+    xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="none">
+    <path 
+        stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" 
+        d="M17.125 13.938c7.249 0 13.125-2.449 13.125-5.47C30.25 5.449 24.374 3 17.125 
+            3S4 5.448 4 8.469c0 3.02 5.876 5.469 13.125 5.469ZM30.25 14.348c0 3.02-5.879 
+            5.468-13.125 5.468S4 17.368 4 14.348m26.25 5.879c0 3.02-5.879 5.468-13.125 
+            5.468S4 23.247 4 20.227"/>
+        <path 
+            stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" 
+            d="M4 8.417V26.02c0 2.991 5.879 5.416 13.125 5.416s13.125-2.425 13.125-5.416V8.417"/>
 </svg>

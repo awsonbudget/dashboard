@@ -6,9 +6,12 @@ import PrintLogIcon from "../assets/printlog.svg";
 export default function JobCard({ name, id, node, status }: JobProps) {
   const navigate = useNavigate();
   return (
-    <div class="card flex items-center justify-around py-2 px-2">
+    <div
+      class="card flex items-center justify-around py-2 px-2 
+        transition duration-275 ease-in-out hover:bg-blue-50"
+    >
       <div>
-        <img src={JobIcon} class="m-2 h-10 w-9 justify-self-start" />
+        <img src={JobIcon} class="m-2 h-9 w-9 justify-self-start" />
       </div>
 
       <span class="m-2 flex h-10 grow items-center justify-self-stretch font-Inter">
@@ -40,7 +43,8 @@ export default function JobCard({ name, id, node, status }: JobProps) {
           onClick={() => {
             navigate("/job/" + id + "/log");
           }}
-          class="type=button m-2 h-10 w-40 cursor-pointer justify-self-end"
+          class="type=button delay-50 m-2 h-10 w-40 cursor-pointer 
+            justify-self-end transition ease-in-out hover:scale-105"
         />
       </div>
     </div>
