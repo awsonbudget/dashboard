@@ -8,7 +8,7 @@ export default function JobCard({ name, id, node, status }: JobProps) {
   return (
     <div class="card flex items-center justify-around py-2 px-2">
       <div>
-        <img src={JobIcon} class="ml-2 h-10 w-9" />
+        <img src={JobIcon} class="m-2 h-10 w-9 justify-self-start" />
       </div>
 
       <span class="m-2 flex h-10 grow items-center justify-self-stretch font-Inter">
@@ -22,13 +22,13 @@ export default function JobCard({ name, id, node, status }: JobProps) {
         <span class="font-regular p-3 text-lg">
           {() => {
             if (status === "registered") {
-              return <a class="font-medium text-blue-500">Registered</a>;
+              return <a class="font-medium text-blue-500">registered</a>;
             } else if (status === "running") {
-              return <a class="font-medium text-orange-500">Running</a>;
+              return <a class="font-medium text-orange-500">running</a>;
             } else if (status === "completed") {
-              return <a class="font-medium text-green-500">Completed</a>;
+              return <a class="font-medium text-green-500">completed</a>;
             } else {
-              return <a class="font-medium text-red-500">Aborted</a>;
+              return <a class="font-medium text-red-500">aborted</a>;
             }
           }}
         </span>

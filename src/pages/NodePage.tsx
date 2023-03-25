@@ -86,6 +86,10 @@ const NodePage = (props: Props) => {
           return (
             <div class="flex gap-8 px-10 pt-4">
               <div class="card p-10 font-Inter">
+                <h2 class="mb-4 text-3xl font-semibold text-gray-800">
+                  Status
+                </h2>
+
                 <h2 class="mb-4 text-2xl font-semibold text-gray-800">
                   {!loaded() ? "Loading" : "Server " + node_id}
                 </h2>
