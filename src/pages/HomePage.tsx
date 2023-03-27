@@ -16,7 +16,7 @@ const HomePage = (props: Props) => {
         Cloud Dashboard
       </div>
 
-      <div class="px-10 pt-10 font-Inter text-4xl font-semibold">All Pods</div>
+      <div class="px-10 pt-12 font-Inter text-4xl font-semibold">All Pods</div>
 
       <div class="grid gap-8 px-10 pt-4 xl:grid-cols-2 4xl:grid-cols-3">
         {props.pods.map((pod: PodProps) => (
@@ -29,7 +29,7 @@ const HomePage = (props: Props) => {
         ))}
       </div>
 
-      <div class="px-10 pt-10 font-Inter text-4xl font-semibold">
+      <div class="px-10 pt-12 font-Inter text-4xl font-semibold">
         All Job Nodes
       </div>
       <div class="grid gap-8 px-10 pt-4 xl:grid-cols-2 4xl:grid-cols-3">
@@ -46,10 +46,10 @@ const HomePage = (props: Props) => {
           ))}
       </div>
 
-      <div class="px-10 pt-10 font-Inter text-4xl font-semibold">
+      <div class="px-10 pt-12 font-Inter text-4xl font-semibold">
         All Server Nodes
       </div>
-      <div class="grid gap-8 px-10 pt-4 lg:grid-cols-2 3xl:grid-cols-3">
+      <div class="grid gap-8 px-10 pt-4 xl:grid-cols-2 4xl:grid-cols-3">
         {props.nodes
           .filter((node: NodeProps) => node.node_type === "server")
           .map((node: NodeProps) => (
@@ -63,7 +63,7 @@ const HomePage = (props: Props) => {
           ))}
       </div>
 
-      <div class="px-10 pt-10 font-Inter text-4xl font-semibold">All Jobs</div>
+      <div class="px-10 pt-12 font-Inter text-4xl font-semibold">All Jobs</div>
       <div class="grid gap-8 px-10 pt-4 4xl:grid-cols-2">
         {props.jobs.map((job: JobProps) => (
           <JobCard

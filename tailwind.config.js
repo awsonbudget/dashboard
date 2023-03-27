@@ -10,6 +10,12 @@ module.exports = {
       fontFamily: {
         Inter: ["Inter"],
       },
+      transitionDelay: {
+        20: "20ms",
+      },
+      transitionDuration: {
+        275: "275ms",
+      },
     },
   },
   plugins: [],

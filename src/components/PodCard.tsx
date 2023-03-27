@@ -11,9 +11,12 @@ export default function PodCard({
 }: PodProps) {
   const navigate = useNavigate();
   return (
-    <div class="card flex items-center justify-around py-2 px-2">
+    <div
+      class="card flex items-center justify-around py-2 px-2
+      transition duration-275 ease-in-out hover:bg-blue-50"
+    >
       <div>
-        <img src={PodIcon} class="m-2 h-10 w-9 justify-self-start" />
+        <img src={PodIcon} class="m-2 h-9 w-9 justify-self-start" />
       </div>
 
       <div class="m-2 flex h-10 grow items-center justify-self-stretch font-Inter">
@@ -32,7 +35,9 @@ export default function PodCard({
           onClick={async () => {
             navigate("/pod/" + pod_id);
           }}
-          class="type=button m-2 h-10 w-10 cursor-pointer justify-self-end rounded-xl hover:animate-pulse hover:bg-blue-100 active:bg-blue-200"
+          class="type=button delay-50 m-2 h-10 w-10 cursor-pointer 
+          justify-self-end rounded-xl transition
+          ease-in-out hover:scale-110 hover:bg-blue-100 active:bg-blue-200"
         />
       </div>
     </div>

@@ -24,7 +24,9 @@ const PodPage = (props: Props) => {
       <div class="flex items-center">
         <img
           src={ArrowIcon}
-          class="type=button m-5 mx-9 h-10 w-10 rotate-180 cursor-pointer rounded-xl hover:animate-pulse hover:bg-blue-100 active:bg-blue-200"
+          class="type=button type=button delay-50 m-5 mx-9 h-10 w-10 rotate-180 cursor-pointer 
+          rounded-xl transition
+            ease-in-out hover:scale-110 hover:bg-blue-100 active:bg-blue-200"
           onClick={() => {
             navigate("/");
           }}
