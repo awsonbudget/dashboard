@@ -18,7 +18,14 @@ export default function PodCard({
       <div class="flex-grow">
         <div class="text-xl font-bold text-gray-800">{pod_name}</div>
         <div class="py-0.5"></div>
-        <div class="text-md text-gray-600">{pod_id}</div>
+        <div
+          class="text-md inline-block cursor-pointer rounded text-gray-600 hover:bg-slate-200"
+          onClick={async () => {
+            navigator.clipboard.writeText(pod_id);
+          }}
+        >
+          {pod_id}
+        </div>
         <div class="py-0.5"></div>
         <div class="text-md text-gray-600">type: {pod_type}</div>
         <div class="py-0.5"></div>

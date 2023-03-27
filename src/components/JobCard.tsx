@@ -31,7 +31,14 @@ export default function JobCard({ name, id, node, status }: JobProps) {
       </div>
       <span class="m-2 flex h-10 grow items-center justify-self-stretch font-Inter">
         <span class="p-3 text-xl font-semibold">{name}</span>
-        <span class="text-md font-regular p-3">{id}</span>
+        <span
+          class="text-md font-regular cursor-pointer rounded px-3 hover:bg-slate-200"
+          onClick={async () => {
+            await navigator.clipboard.writeText(id);
+          }}
+        >
+          {id}
+        </span>
         {node === null ? (
           <span class="font-regular text-md p-3">No node assigned</span>
         ) : (

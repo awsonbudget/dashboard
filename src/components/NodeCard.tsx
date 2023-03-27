@@ -38,7 +38,14 @@ export default function NodeCard({
       <div class="flex-grow">
         <div class="text-xl font-bold text-gray-800">{node_name}</div>
         <div class="py-0.5"></div>
-        <div class="text-md text-gray-600">{node_id}</div>
+        <div
+          class="text-md inline-block cursor-pointer rounded text-gray-600 hover:bg-slate-200"
+          onClick={async () => {
+            navigator.clipboard.writeText(node_id);
+          }}
+        >
+          {node_id}
+        </div>
         <div class="py-0.5"></div>
         <div class="text-md text-gray-600">Within: {pod_data.pod_name}</div>
         <div class="py-0.5"></div>
