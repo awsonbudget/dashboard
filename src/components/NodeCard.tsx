@@ -15,15 +15,15 @@ export default function NodeCard({
 
   let color: string;
   if (node_status === "idle" || node_status === "online") {
-    color = "green";
+    color = "text-green-500";
   } else if (node_status === "running" || node_status === "paused") {
-    color = "orange";
+    color = "text-orange-500";
   } else if (node_status === "new") {
-    color = "blue";
+    color = "text-blue-500";
   } else {
     // this should never happen!
     console.log("something went wrong with node status");
-    color = "gray";
+    color = "text-gray-500";
   }
 
   return (
@@ -42,7 +42,7 @@ export default function NodeCard({
         <div class="py-0.5"></div>
         <div class="text-md text-gray-600">Within: {pod_data.pod_name}</div>
         <div class="py-0.5"></div>
-        <div class={`text-md text-${color}-500`}>{node_status}</div>
+        <div class={`text-md ${color}`}>{node_status}</div>
       </div>
       <div>
         <div class="inline-flex items-center rounded-lg text-white focus:outline-none">

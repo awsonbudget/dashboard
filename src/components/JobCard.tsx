@@ -8,17 +8,17 @@ export default function JobCard({ name, id, node, status }: JobProps) {
 
   let color: string;
   if (status === "registered") {
-    color = "blue";
+    color = "text-blue-500";
   } else if (status === "running") {
-    color = "orange";
+    color = "text-orange-500";
   } else if (status === "completed") {
-    color = "green";
+    color = "text-green-500";
   } else if (status === "aborted") {
-    color = "red";
+    color = "text-red-500";
   } else {
     // this should never happen!
     console.log("something went wrong with node status");
-    color = "gray";
+    color = "text-gray-500";
   }
 
   return (
@@ -38,7 +38,7 @@ export default function JobCard({ name, id, node, status }: JobProps) {
           <span class="font-regular text-md p-3">Under {node}</span>
         )}
         <span class="font-regular text-md p-3">
-          <a class={`font-medium text-${color}-500`}>registered</a>
+          <a class={`font-regular ${color}`}>registered</a>
         </span>
       </span>
       <div>
