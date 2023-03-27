@@ -4,9 +4,7 @@ import { fetchJobLog, fetchNodeLog } from "../api/manager";
 import RefreshIcon from "../assets/refresh.svg";
 import ArrowIcon from "../assets/arrow.svg";
 
-type Props = {};
-
-const LogPage = (props: Props) => {
+const LogPage = () => {
   const { type, id } = useParams();
   const navigate = useNavigate();
   if (

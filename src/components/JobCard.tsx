@@ -22,13 +22,13 @@ export default function JobCard({ name, id, node, status }: JobProps) {
         <span class="font-regular p-3 text-lg">
           {() => {
             if (status === "registered") {
-              return <a class="font-medium text-blue-500">Registered</a>;
+              return <a class="font-medium text-blue-500">registered</a>;
             } else if (status === "running") {
-              return <a class="font-medium text-orange-500">Running</a>;
+              return <a class="font-medium text-orange-500">running</a>;
             } else if (status === "completed") {
-              return <a class="font-medium text-green-500">Completed</a>;
+              return <a class="font-medium text-green-500">completed</a>;
             } else {
-              return <a class="font-medium text-red-500">Aborted</a>;
+              return <a class="font-medium text-red-500">aborted</a>;
             }
           }}
         </span>
