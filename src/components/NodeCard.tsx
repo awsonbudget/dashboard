@@ -27,39 +27,37 @@ export default function NodeCard({
   }
 
   return (
-    <div
-      class="card flex items-center justify-around py-2 px-2
-      transition duration-275 ease-in-out hover:bg-blue-50"
-    >
-      <div>
+    <div class="card flex items-center rounded-lg border p-4 transition duration-275 ease-in-out hover:bg-blue-50">
+      <div class="mr-4">
         {node_type === "job" ? (
-          <img src={NodeIcon} class="m-2 h-9 w-9 justify-self-start" />
+          <img src={NodeIcon} class="h-12 w-12 justify-self-start" />
         ) : (
-          <img src={ServerIcon} class="m-2 h-9 w-9 justify-self-start" />
+          <img src={ServerIcon} class="h-12 w-12 justify-self-start" />
         )}
       </div>
-
-      <span class="m-2 flex h-10 grow items-center justify-self-stretch font-Inter">
-        <span class="p-3 text-xl font-semibold">{node_name}</span>
-        <span class="text-md font-regular p-3">{node_id}</span>
-        <span class="font-regular p-3 text-lg">Within {pod_data.pod_name}</span>
-        <span class={`p-3 text-lg font-medium text-${color}-500`}>
-          {node_status}
-        </span>
-      </span>
-
+      <div class="flex-grow">
+        <div class="text-xl font-bold text-gray-800">{node_name}</div>
+        <div class="py-0.5"></div>
+        <div class="text-md text-gray-600">{node_id}</div>
+        <div class="py-0.5"></div>
+        <div class="text-md text-gray-600">Within: {pod_data.pod_name}</div>
+        <div class="py-0.5"></div>
+        <div class={`text-md text-${color}-500`}>{node_status}</div>
+      </div>
       <div>
-        <img
-          src={ArrowIcon}
-          onClick={async () => {
-            navigate(
-              "/pod/" + pod_data.pod_id + "/node/" + node_type + "/" + node_id
-            );
-          }}
-          class="type=button delay-50 m-2 h-10 w-10 cursor-pointer 
-            justify-self-end rounded-xl transition
-            ease-in-out hover:scale-110 hover:bg-blue-100 active:bg-blue-200"
-        />
+        <div class="inline-flex items-center rounded-lg text-white focus:outline-none">
+          <img
+            src={ArrowIcon}
+            onClick={async () => {
+              navigate(
+                "/pod/" + pod_data.pod_id + "/node/" + node_type + "/" + node_id
+              );
+            }}
+            class="type=button delay-50 m-2 h-10 w-10 cursor-pointer
+           justify-self-end rounded-xl transition
+           ease-in-out hover:scale-110 hover:bg-blue-100 active:bg-blue-200"
+          />
+        </div>
       </div>
     </div>
   );

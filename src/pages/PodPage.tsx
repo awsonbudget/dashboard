@@ -34,7 +34,7 @@ const PodPage = (props: Props) => {
       </div>
 
       <div class="px-10 pt-3 font-Inter text-4xl font-semibold">All Nodes</div>
-      <div class="grid gap-8 px-10 pt-4 xl:grid-cols-2">
+      <div class="grid gap-8 px-10 pt-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 4xl:grid-cols-6">
         {props.nodes
           .filter(
             (node: NodeProps) => node.pod_data.pod_id.toString() === pod_id
@@ -50,8 +50,7 @@ const PodPage = (props: Props) => {
           ))}
       </div>
       <div class="px-10 pt-10 font-Inter text-4xl font-semibold">All Jobs</div>
-
-      <div class="grid grid-cols-1 gap-8 px-10 pt-4">
+      <div class="grid gap-8 px-10 pt-4 4xl:grid-cols-2">
         {props.jobs.map((job: JobProps) => (
           // TODO: Filter jobs by pod id
           <JobCard

@@ -11,34 +11,31 @@ export default function PodCard({
 }: PodProps) {
   const navigate = useNavigate();
   return (
-    <div
-      class="card flex items-center justify-around py-2 px-2
-      transition duration-275 ease-in-out hover:bg-blue-50"
-    >
-      <div>
-        <img src={PodIcon} class="m-2 h-9 w-9 justify-self-start" />
+    <div class="card flex items-center rounded-lg border p-4 transition duration-275 ease-in-out hover:bg-blue-50">
+      <div class="mr-4">
+        <img src={PodIcon} class="h-12 w-12 justify-self-start" />
       </div>
-
-      <div class="m-2 flex h-10 grow items-center justify-self-stretch font-Inter">
-        <span class="p-3 text-xl font-semibold">{pod_name}</span>
-        <span class="text-md font-regular p-3">{pod_id}</span>
-        <span class="text-md p-3 font-bold">{pod_type}</span>
-
-        <span class="font-regular p-3 text-lg">
-          {total_nodes} {total_nodes > 1 ? "nodes" : "node"} online
-        </span>
+      <div class="flex-grow">
+        <div class="text-xl font-bold text-gray-800">{pod_name}</div>
+        <div class="py-0.5"></div>
+        <div class="text-md text-gray-600">{pod_id}</div>
+        <div class="py-0.5"></div>
+        <div class="text-md text-gray-600">type: {pod_type}</div>
+        <div class="py-0.5"></div>
+        <div class="text-md text-gray-600">{total_nodes} online</div>
       </div>
-
       <div>
-        <img
-          src={ArrowIcon}
-          onClick={async () => {
-            navigate("/pod/" + pod_id);
-          }}
-          class="type=button delay-50 m-2 h-10 w-10 cursor-pointer 
-          justify-self-end rounded-xl transition
-          ease-in-out hover:scale-110 hover:bg-blue-100 active:bg-blue-200"
-        />
+        <div class="inline-flex items-center rounded-lg text-white focus:outline-none">
+          <img
+            src={ArrowIcon}
+            onClick={async () => {
+              navigate("/pod/" + pod_id);
+            }}
+            class="type=button delay-50 m-2 h-10 w-10 cursor-pointer
+           justify-self-end rounded-xl transition
+           ease-in-out hover:scale-110 hover:bg-blue-100 active:bg-blue-200"
+          />
+        </div>
       </div>
     </div>
   );
