@@ -3,6 +3,7 @@ import NodeCard from "../components/NodeCard";
 import JobCard from "../components/JobCard";
 import { JobProps, NodeProps, PodProps } from "../api/type";
 import { createSignal } from "solid-js";
+import SearchIcon from "../assets/search.svg";
 
 type Props = {
   pods: PodProps[];
@@ -25,14 +26,21 @@ const HomePage = (props: Props) => {
 
       <div class="py-4"></div>
 
-      <div class="mx-10 flex items-center rounded-md border border-gray-300">
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchTerm()}
-          onInput={handleInput}
-          class="w-full border-none bg-white px-4 py-2 text-gray-700 outline-none focus:ring-0"
-        />
+      <div class="mx-auto px-10">
+        <div class="relative flex h-12 w-full items-center overflow-hidden rounded-lg bg-white focus-within:shadow-lg">
+          <div class="grid h-full w-12 place-items-center text-gray-300">
+            <img src={SearchIcon} class="h-6 w-6" />
+          </div>
+
+          <input
+            class="peer h-full w-full pr-2 text-sm text-gray-700 outline-none"
+            type="text"
+            id="search"
+            value={searchTerm()}
+            onInput={handleInput}
+            placeholder="Search something.."
+          />
+        </div>
       </div>
 
       <div class="px-10 pt-12 font-Inter text-4xl font-semibold">All Pods</div>
