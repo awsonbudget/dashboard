@@ -3,9 +3,6 @@ import { JobProps, NodeProps } from "../api/type";
 import JobCard from "../components/JobCard";
 import NodeCard from "../components/NodeCard";
 import ArrowIcon from "../assets/arrow.svg";
-import CPUIcon from "../assets/cpu.svg";
-import MemoryIcon from "../assets/memory.svg";
-import IOIcon from "../assets/io.svg";
 
 type Props = {
   nodes: NodeProps[];
@@ -65,59 +62,6 @@ const PodPage = (props: Props) => {
         ))}
       </div>
       <div class="py-4" />
-
-      <div class="flex gap-8 px-10 pt-12">
-        <div
-          class="card p-10 font-Inter
-                transition duration-250 ease-in-out hover:bg-blue-50"
-        >
-          <h2 class="mb-4 text-3xl font-semibold text-gray-800">Pod Status</h2>
-
-          <h2 class="mb-4 text-2xl font-semibold text-gray-800">
-            {"Pod " + pod_id}
-          </h2>
-
-          <div class="mb-6 flex justify-between">
-            <div class="flex items-center">
-              <img src={CPUIcon} class="mr-3 h-7 w-7 hover:animate-pulse" />
-              <span class="pr-20 text-xl font-medium text-black">
-                CPU Usage
-              </span>
-            </div>
-            <span class="text-xl font-medium text-black">%</span>
-          </div>
-          <div class="mb-6 flex justify-between">
-            <div class="flex items-center">
-              <img src={MemoryIcon} class="mr-3 h-7 w-7 hover:animate-pulse" />
-              <span class="pr-20 text-xl font-medium text-black">
-                Memory Usage
-              </span>
-            </div>
-            <span class="text-xl font-medium text-black">B</span>
-          </div>
-          <div class="mb-6 flex justify-between">
-            <div class="flex items-center">
-              <img
-                src={IOIcon}
-                class="mr-3 h-7 w-7 rotate-180 hover:animate-pulse"
-              />
-              <span class="pr-20 text-xl font-medium text-black">
-                Network In
-              </span>
-            </div>
-            <span class="text-xl font-medium text-black">B</span>
-          </div>
-          <div class="flex justify-between">
-            <div class="flex items-center">
-              <img src={IOIcon} class="mr-3 h-7 w-7 hover:animate-pulse" />
-              <span class="pr-20 text-xl font-medium text-black">
-                Network Out
-              </span>
-            </div>
-            <span class="text-xl font-medium text-black">B</span>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };
