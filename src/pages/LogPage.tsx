@@ -35,7 +35,7 @@ const LogPage = () => {
   };
 
   return (
-    <div class="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300">
+    <div class="min-h-screen bg-gradient-to-b from-gray-100 to-gray-300 dark:bg-gradient-to-r dark:from-gray-700 dark:via-gray-900 dark:to-black dark:text-white">
       <div class="px-10 pt-10 font-Inter text-5xl font-semibold">Logs</div>
 
       <div class="flex items-center">

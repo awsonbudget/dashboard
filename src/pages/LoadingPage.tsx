@@ -7,7 +7,7 @@ const LoadingPage = ({ delay }: { delay: number }) => {
     setShow(true);
   }, delay);
   return (
-    <div class="py- flex h-screen items-center justify-center">
+    <div class="flex h-screen items-center justify-center">
       <div class="text-center">
         <svg
           aria-hidden="true"
