@@ -27,18 +27,21 @@ const HomePage = (props: Props) => {
       <div class="py-4"></div>
 
       <div class="mx-auto px-10">
-        <div class="relative flex h-12 w-full items-center overflow-hidden rounded-lg bg-white focus-within:shadow-lg">
+        <div
+          class="relative flex h-12 w-full items-center overflow-hidden rounded-lg bg-white 
+          transition duration-250 ease-in-out focus-within:shadow-lg hover:shadow-lg"
+        >
           <div class="grid h-full w-12 place-items-center text-gray-300">
             <img src={SearchIcon} class="h-6 w-6" />
           </div>
 
           <input
-            class="peer h-full w-full pr-2 text-sm text-gray-700 outline-none"
+            class="peer h-full w-full pr-2 font-Inter text-sm text-gray-700 outline-none"
             type="text"
             id="search"
             value={searchTerm()}
             onInput={handleInput}
-            placeholder="Search something.."
+            placeholder="Search something..."
           />
         </div>
       </div>

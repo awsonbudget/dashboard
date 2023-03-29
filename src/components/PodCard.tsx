@@ -11,11 +11,11 @@ export default function PodCard({
 }: PodProps) {
   const navigate = useNavigate();
   return (
-    <div class="card flex items-center rounded-lg border p-4 transition duration-275 ease-in-out hover:bg-blue-50">
-      <div class="mr-4">
+    <div class="card flex items-center rounded-lg border p-4 transition duration-250 ease-in-out hover:bg-blue-50">
+      <div class="mr-4 p-1">
         <img src={PodIcon} class="h-12 w-12 justify-self-start" />
       </div>
-      <div class="flex-grow">
+      <div class="flex-grow font-Inter">
         <div class="text-xl font-bold text-gray-800">{pod_name}</div>
         <div class="py-0.5"></div>
         <div

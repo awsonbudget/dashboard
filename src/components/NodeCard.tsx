@@ -27,15 +27,15 @@ export default function NodeCard({
   }
 
   return (
-    <div class="card flex items-center rounded-lg border p-4 transition duration-275 ease-in-out hover:bg-blue-50">
-      <div class="mr-4">
+    <div class="card flex items-center rounded-lg border p-4 transition duration-250 ease-in-out hover:bg-blue-50">
+      <div class="mr-4 p-1">
         {node_type === "job" ? (
           <img src={NodeIcon} class="h-12 w-12 justify-self-start" />
         ) : (
           <img src={ServerIcon} class="h-12 w-12 justify-self-start" />
         )}
       </div>
-      <div class="flex-grow">
+      <div class="flex-grow font-Inter">
         <div class="text-xl font-bold text-gray-800">{node_name}</div>
         <div class="py-0.5"></div>
         <div

@@ -24,10 +24,10 @@ export default function JobCard({ name, id, node, status }: JobProps) {
   return (
     <div
       class="card flex items-center justify-around py-2 px-2
-        transition duration-275 ease-in-out hover:bg-blue-50"
+        transition duration-250 ease-in-out hover:bg-blue-50"
     >
       <div>
-        <img src={JobIcon} class="m-2 h-12 w-12 justify-self-start" />
+        <img src={JobIcon} class="m-2 h-10 w-10 justify-self-start" />
       </div>
       <span class="m-2 flex h-10 grow items-center justify-self-stretch font-Inter">
         <span class="p-3 text-xl font-semibold">{name}</span>

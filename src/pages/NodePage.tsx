@@ -89,7 +89,7 @@ const NodePage = (props: Props) => {
             <div class="flex gap-8 px-10 pt-4">
               <div
                 class="card p-10 font-Inter
-                transition duration-275 ease-in-out hover:bg-blue-50"
+                transition duration-250 ease-in-out hover:bg-blue-50"
               >
                 <h2 class="mb-4 text-3xl font-semibold text-gray-800">
                   Status
