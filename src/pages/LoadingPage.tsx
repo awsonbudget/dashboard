@@ -29,7 +29,7 @@ const LoadingPage = ({ delay }: { delay: number }) => {
           <div class="text-bold mt-4 text-slate-600">
             <div>Taking longer than expected, is the cloud initialized?</div>
             <button
-              class="type=button mt-4 cursor-pointer rounded bg-red-400 py-2 px-4 font-medium text-white hover:bg-red-500"
+              class="type=button mt-4 cursor-pointer rounded bg-red-400 px-4 py-2 font-medium text-white hover:bg-red-500"
               onClick={() => {
                 location.reload();
               }}

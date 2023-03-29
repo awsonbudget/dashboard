@@ -23,7 +23,7 @@ export default function JobCard({ name, id, node, status }: JobProps) {
 
   return (
     <div
-      class="card flex items-center justify-around py-2 px-2
+      class="card flex items-center justify-around px-2 py-2
         transition duration-250 ease-in-out hover:bg-blue-50"
     >
       <div>
