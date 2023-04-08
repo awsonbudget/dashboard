@@ -45,7 +45,6 @@ function App() {
     connect();
   };
 
-  // console.log(initialized());
   return (
     <Router>
       <Routes>

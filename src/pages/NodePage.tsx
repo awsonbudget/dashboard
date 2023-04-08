@@ -3,7 +3,7 @@ import { JobProps, StatsProps } from "../api/type";
 import JobCard from "../components/JobCard";
 import ArrowIcon from "../assets/arrow.svg";
 import PrintLogIcon from "../assets/printlog.svg";
-import { createEffect, createSignal, onCleanup, onMount } from "solid-js";
+import { createEffect, createSignal, onCleanup } from "solid-js";
 import { fetchStats } from "../api/manager";
 import CPUIcon from "../assets/cpu.svg";
 import MemoryIcon from "../assets/memory.svg";
