@@ -46,29 +46,40 @@ const HomePage = (props: Props) => {
         </div>
       </div>
 
-      <div class="px-10 pt-12 font-Inter text-4xl font-semibold">All Pods</div>
+      <div class="py-4"></div>
 
+      <div class="title">All Pods</div>
       <div class="grid gap-8 px-10 pt-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 4xl:grid-cols-6">
-        {props.pods
-          .filter((pod) => pod.pod_name.includes(searchTerm()))
-          .map((pod: PodProps) => (
+        {() => {
+          const filtered = props.pods.filter((pod) =>
+            pod.pod_name.includes(searchTerm())
+          );
+          if (filtered.length === 0) {
+            return <div>No pods found</div>;
+          }
+          return filtered.map((pod: PodProps) => (
             <PodCard
               pod_name={pod.pod_name}
               pod_id={pod.pod_id}
               pod_type={pod.pod_type}
               total_nodes={pod.total_nodes}
             />
-          ))}
+          ));
+        }}
       </div>
 
-      <div class="px-10 pt-12 font-Inter text-4xl font-semibold">
-        All Job Nodes
-      </div>
+      <div class="py-4"></div>
+
+      <div class="title">All Job Nodes</div>
       <div class="grid gap-8 px-10 pt-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 4xl:grid-cols-6">
-        {props.nodes
-          .filter((node) => node.node_name.includes(searchTerm()))
-          .filter((node: NodeProps) => node.node_type === "job")
-          .map((node: NodeProps) => (
+        {() => {
+          const filtered = props.nodes
+            .filter((node) => node.node_name.includes(searchTerm()))
+            .filter((node: NodeProps) => node.node_type === "job");
+          if (filtered.length === 0) {
+            return <div>No job nodes found</div>;
+          }
+          return filtered.map((node: NodeProps) => (
             <NodeCard
               node_name={node.node_name}
               node_id={node.node_id}
@@ -76,17 +87,22 @@ const HomePage = (props: Props) => {
               node_type={node.node_type}
               pod_data={node.pod_data}
             />
-          ))}
+          ));
+        }}
       </div>
 
-      <div class="px-10 pt-12 font-Inter text-4xl font-semibold">
-        All Server Nodes
-      </div>
+      <div class="py-4"></div>
+
+      <div class="title">All Server Nodes</div>
       <div class="grid gap-8 px-10 pt-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 4xl:grid-cols-6">
-        {props.nodes
-          .filter((node) => node.node_name.includes(searchTerm()))
-          .filter((node: NodeProps) => node.node_type === "server")
-          .map((node: NodeProps) => (
+        {() => {
+          const filtered = props.nodes
+            .filter((node) => node.node_name.includes(searchTerm()))
+            .filter((node: NodeProps) => node.node_type === "server");
+          if (filtered.length === 0) {
+            return <div>No server nodes found</div>;
+          }
+          return filtered.map((node: NodeProps) => (
             <NodeCard
               node_name={node.node_name}
               node_id={node.node_id}
@@ -94,14 +110,22 @@ const HomePage = (props: Props) => {
               node_type={node.node_type}
               pod_data={node.pod_data}
             />
-          ))}
+          ));
+        }}
       </div>
 
-      <div class="px-10 pt-12 font-Inter text-4xl font-semibold">All Jobs</div>
+      <div class="py-4"></div>
+
+      <div class="title">All Jobs</div>
       <div class="grid gap-8 px-10 pt-4 4xl:grid-cols-2">
-        {props.jobs
-          .filter((job) => job.job_name.includes(searchTerm()))
-          .map((job: JobProps) => (
+        {() => {
+          const filtered = props.jobs.filter((job) =>
+            job.job_name.includes(searchTerm())
+          );
+          if (filtered.length === 0) {
+            return <div>No jobs found</div>;
+          }
+          return filtered.map((job: JobProps) => (
             <JobCard
               job_id={job.job_id}
               job_name={job.job_name}
@@ -109,7 +133,8 @@ const HomePage = (props: Props) => {
               pod_id={job.pod_id}
               job_status={job.job_status}
             />
-          ))}
+          ));
+        }}
       </div>
       <div class="py-4"></div>
     </div>

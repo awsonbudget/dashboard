@@ -7,3 +7,7 @@
 .card {
   @apply rounded-xl bg-white shadow-xl;
 }
+
+.title {
+  @apply px-10 font-Inter text-4xl font-semibold;
+}

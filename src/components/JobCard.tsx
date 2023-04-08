@@ -51,7 +51,7 @@ export default function JobCard({
           <span class="font-regular text-md p-3">Under {node_id}</span>
         )}
         <span class="font-regular text-md p-3">
-          <a class={`font-regular ${color}`}>registered</a>
+          <a class={`font-regular ${color}`}>{job_status}</a>
         </span>
       </span>
       <div>

@@ -53,15 +53,16 @@ const NodePage = (props: Props) => {
 
       {node_type === "job" ? (
         <div>
-          <div class="px-10 pt-3 font-Inter text-4xl font-semibold">
-            All Jobs
-          </div>
+          <div class="title">All Jobs</div>
           <div class="grid gap-8 px-10 pt-4 4xl:grid-cols-2">
-            {props.jobs
-              .filter((job: JobProps) => {
-                return job.node_id === node_id;
-              })
-              .map((job: JobProps) => (
+            {() => {
+              const filtered = props.jobs.filter((job: JobProps) => {
+                job.node_id === node_id;
+              });
+              if (filtered.length === 0) {
+                return <div>No jobs found</div>;
+              }
+              return filtered.map((job: JobProps) => (
                 <JobCard
                   job_id={job.job_id}
                   job_name={job.job_name}
@@ -69,7 +70,8 @@ const NodePage = (props: Props) => {
                   pod_id={job.pod_id}
                   job_status={job.job_status}
                 />
-              ))}
+              ));
+            }}
           </div>
         </div>
       ) : (
