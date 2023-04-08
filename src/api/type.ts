@@ -5,10 +5,11 @@ export type LogProps = {
 };
 
 export type JobProps = {
-  id: string;
-  name: string;
-  node: string;
-  status: "registered" | "running" | "completed" | "aborted";
+  job_id: string;
+  job_name: string;
+  node_id: string;
+  pod_id: string;
+  job_status: "registered" | "running" | "completed" | "aborted";
 };
 
 export type NodeProps = {

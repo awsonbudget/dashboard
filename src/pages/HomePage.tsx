@@ -100,13 +100,14 @@ const HomePage = (props: Props) => {
       <div class="px-10 pt-12 font-Inter text-4xl font-semibold">All Jobs</div>
       <div class="grid gap-8 px-10 pt-4 4xl:grid-cols-2">
         {props.jobs
-          .filter((job) => job.name.includes(searchTerm()))
+          .filter((job) => job.job_name.includes(searchTerm()))
           .map((job: JobProps) => (
             <JobCard
-              id={job.id}
-              name={job.name}
-              node={job.node}
-              status={job.status}
+              job_id={job.job_id}
+              job_name={job.job_name}
+              node_id={job.node_id}
+              pod_id={job.pod_id}
+              job_status={job.job_status}
             />
           ))}
       </div>
