@@ -39,6 +39,18 @@ export const fetchStats = async (
     });
 };
 
+export const refreshPod = async (): Promise<void> => {
+  await axios.post(
+    manager + "/internal/refresh/",
+    {},
+    {
+      params: {
+        type: "pod",
+      },
+    }
+  );
+};
+
 export const fetchJob = async (): Promise<JobProps[]> => {
   return await axios.get(manager + "/cloud/job/").then((response) => {
     return response.data.data;

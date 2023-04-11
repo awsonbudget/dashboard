@@ -24,6 +24,8 @@ export type PodProps = {
   pod_name: string;
   pod_id: string;
   pod_type: string;
+  is_elastic: boolean;
+  usage: number;
   total_nodes: number;
 };
 

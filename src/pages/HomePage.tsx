@@ -62,6 +62,8 @@ const HomePage = (props: Props) => {
               pod_name={pod.pod_name}
               pod_id={pod.pod_id}
               pod_type={pod.pod_type}
+              is_elastic={pod.is_elastic}
+              usage={pod.usage}
               total_nodes={pod.total_nodes}
             />
           ));
