@@ -2,8 +2,6 @@ import { useNavigate } from "@solidjs/router";
 import { PodProps } from "../api/type";
 import PodIcon from "../assets/pod.svg";
 import ArrowIcon from "../assets/arrow.svg";
-import { createEffect, onCleanup } from "solid-js";
-import { refreshPod } from "../api/manager";
 
 export default function PodCard({
   pod_name,
@@ -14,12 +12,6 @@ export default function PodCard({
   total_nodes,
 }: PodProps) {
   const navigate = useNavigate();
-  createEffect(async () => {
-    const interval = setInterval(async () => {
-      await refreshPod();
-    }, 2000);
-    onCleanup(() => clearInterval(interval));
-  });
 
   return (
     <div class="card flex items-center rounded-lg border p-4 transition duration-250 ease-in-out hover:bg-blue-50">

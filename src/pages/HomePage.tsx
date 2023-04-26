@@ -2,8 +2,9 @@ import PodCard from "../components/PodCard";
 import NodeCard from "../components/NodeCard";
 import JobCard from "../components/JobCard";
 import { JobProps, NodeProps, PodProps } from "../api/type";
-import { createSignal } from "solid-js";
+import { createEffect, createSignal, onCleanup } from "solid-js";
 import SearchIcon from "../assets/search.svg";
+import { refreshPod } from "../api/manager";
 
 type Props = {
   pods: PodProps[];
@@ -17,6 +18,13 @@ const HomePage = (props: Props) => {
   const handleInput = (event: any) => {
     setSearchTerm(event.target.value);
   };
+
+  createEffect(async () => {
+    const interval = setInterval(async () => {
+      await refreshPod();
+    }, 2000);
+    onCleanup(() => clearInterval(interval));
+  });
 
   return (
     <div class="min-h-screen bg-gradient-to-r from-gray-100 to-gray-300 dark:bg-gradient-to-r dark:from-gray-700 dark:via-gray-900 dark:to-black dark:text-white">

@@ -12,6 +12,7 @@ type Props = {
 const PodPage = (props: Props) => {
   const { pod_id } = useParams();
   const navigate = useNavigate();
+
   if (pod_id === undefined) {
     return <div>Invalid Query</div>;
   }
