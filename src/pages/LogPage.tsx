@@ -65,7 +65,9 @@ const LogPage = () => {
       </div>
 
       <div class="card mx-10 my-5 flex">
-        <div class="text-md whitespace-pre-wrap p-12 font-Inter">{log}</div>
+        <div class="text-md whitespace-pre-wrap p-12 font-Inter text-gray-600">
+          {log}
+        </div>
       </div>
       <div class="py-4" />
     </div>

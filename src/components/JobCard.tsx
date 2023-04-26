@@ -36,9 +36,9 @@ export default function JobCard({
         <img src={JobIcon} class="m-2 h-10 w-10 justify-self-start" />
       </div>
       <span class="m-2 flex h-10 grow items-center justify-self-stretch font-Inter">
-        <span class="p-3 text-xl font-semibold">{job_name}</span>
+        <span class="p-3 text-xl font-semibold text-gray-800">{job_name}</span>
         <span
-          class="text-md font-regular cursor-pointer rounded px-3 hover:bg-slate-200"
+          class="text-md font-regular cursor-pointer rounded px-3 text-gray-600 hover:bg-slate-200"
           onClick={async () => {
             await navigator.clipboard.writeText(job_id);
           }}
@@ -46,11 +46,15 @@ export default function JobCard({
           {job_id}
         </span>
         {node_id === null ? (
-          <span class="font-regular text-md p-3">No node assigned</span>
+          <span class="font-regular text-md p-3 text-gray-600">
+            No node assigned
+          </span>
         ) : (
-          <span class="font-regular text-md p-3">Under {node_id}</span>
+          <span class="font-regular text-md p-3 text-gray-600">
+            Under {node_id}
+          </span>
         )}
-        <span class="font-regular text-md p-3">
+        <span class="font-regular text-md p-3 text-gray-600">
           <a class={`font-regular ${color}`}>{job_status}</a>
         </span>
       </span>
